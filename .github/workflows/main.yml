@@ -19,6 +19,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Flatpak Builder
+      run: ls -l
       # You may pin to the exact commit or the version.
       # uses: flatpak/flatpak-github-actions@fcc75a490e0a97ff4785b706adfc4fc10e732f4e
       uses: flatpak/flatpak-github-actions@v2
