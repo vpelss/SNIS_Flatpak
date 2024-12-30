@@ -12,7 +12,7 @@ modules:
       - ls -l
       - ./configure
       - make
-      - mkdir ${FLATPAK_DEST}/lib
+      - mkdir -p ${FLATPAK_DEST}/lib
       - cp ./.libs/libopus.a ${FLATPAK_DEST}/lib/
     sources:
       - type: archive 
@@ -35,8 +35,8 @@ modules:
       - ls -l
       - make linux
       - make local
-      - mkdir ${FLATPAK_DEST}/include
-      - mkdir ${FLATPAK_DEST}/lib
+      - mkdir -p ${FLATPAK_DEST}/include
+      - mkdir -p ${FLATPAK_DEST}/lib
       - cp src/* ${FLATPAK_DEST}/lib/
       - cp src/* ${FLATPAK_DEST}/include/
     sources:
