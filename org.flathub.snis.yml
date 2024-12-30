@@ -9,7 +9,6 @@ modules:
   - name: glew
     buildsystem: simple
     build-commands: 
-      # - ls -l
       - cd build/cmake
       - cmake
     sources:
@@ -21,8 +20,12 @@ modules:
     buildsystem: simple
     build-commands: 
       - ls -l
-      # - tar -b lua-5.2.4.tar.gz
       - make linux
+      - make local
+      - mkdir ${FLATPAK_DEST}/include
+      - mkdir ${FLATPAK_DEST}/lib
+      - cp src/* ${FLATPAK_DEST}/lib/
+      - cp src/* ${FLATPAK_DEST}/include/
     sources:
       - type: archive 
         url: https://www.lua.org/ftp/lua-5.2.4.tar.gz
@@ -45,8 +48,8 @@ modules:
       #- make
       #- cmake -Bbin -Ssrc
       # - ls -l
-       - make 
-       - make update-assets
+      - make 
+      - make update-assets
       # - ls -l
       - cp -r /run/build/bin/* ${FLATPAK_DEST}/bin/
       - cp -r /run/build/share/* ${FLATPAK_DEST}/share/
