@@ -44,13 +44,8 @@ modules:
     build-commands:
       - mkdir -p /app/bin
       - mkdir -p /app/share
-      #- cd space-nerds-in-space
-      #- make
-      #- cmake -Bbin -Ssrc
-      # - ls -l
       - make 
       - make update-assets
-      # - ls -l
       - cp -r /run/build/bin/* ${FLATPAK_DEST}/bin/
       - cp -r /run/build/share/* ${FLATPAK_DEST}/share/
     sources:
