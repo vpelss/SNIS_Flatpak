@@ -5,7 +5,6 @@ sdk: org.gnome.Sdk
 command: snis_launcher
 
 modules:
-
   - name: opus
     buildsystem: simple
     build-commands: 
@@ -20,15 +19,18 @@ modules:
         sha256: 65b58e1e25b2a114157014736a3d9dfeaad8d41be1c8179866f144a2fb44ff9d
 
   - name: glew
-    buildsystem: simple
+    buildsystem: cmake
     build-commands: 
-      - cd build/cmake
-      - cmake
+      - make SYSTEM=linux
+      - make install
+      - mkdir -p ${FLATPAK_DEST}/include
+      - mkdir -p ${FLATPAK_DEST}/lib
+      - cp src/* ${FLATPAK_DEST}/lib/
+      - cp src/* ${FLATPAK_DEST}/include/
     sources:
       - type: git 
-        url: https://github.com/nigels-com/glew.git
+        url: https://github.com/Perlmint/glew-cmake.git
         commit: master
-
   - name: lua
     buildsystem: simple
     build-commands: 
@@ -43,10 +45,14 @@ modules:
       - type: archive 
         url: https://www.lua.org/ftp/lua-5.2.4.tar.gz
         sha256: b9e2e4aad6789b3b63a056d442f7b39f0ecfca3ae0f1fc0ae4e9614401b69f4b
-
   - name: portaudio
-    buildsystem: cmake
+    buildsystem: simple
     build-commands: 
+      - ls -l ${FLATPAK_DEST}
+      - mkdir -p ${FLATPAK_DEST}/pkg-config
+      - ls -l
+      - ls -l ${FLATPAK_DEST}
+      #- mkdir -p /app/share
     sources:
       - type: git
         url: https://github.com/PortAudio/portaudio.git
@@ -55,17 +61,18 @@ modules:
   - name: snis
     buildsystem: simple
     build-commands:
+      - ls -l ${FLATPAK_DEST}
+      - ls -l 
       - mkdir -p /app/bin
       - mkdir -p /app/share
-      - make 
+      - make -k
       - make update-assets
       - cp -r /run/build/bin/* ${FLATPAK_DEST}/bin/
       - cp -r /run/build/share/* ${FLATPAK_DEST}/share/
     sources:
       - type: git
-        url: https://github.com/smcameron/space-nerds-in-space.git
+        url: https://github.com/vpelss/space-nerds-in-space.git
         commit: master
-
   - name: wrappersnis
     #build-options: *compat-build-options
     buildsystem: simple
