@@ -37,13 +37,6 @@ modules:
   - name: portaudio
     buildsystem: cmake
     build-commands: 
-      - mkdir -p ${FLATPAK_DEST}/include
-      - mkdir -p ${FLATPAK_DEST}/lib
-      - mkdir -p ${FLATPAK_DEST}/lib64
-      #- ./configure && make
-      #- cp -r include/* ${FLATPAK_DEST}/include/
-      #- cp -r lib/* ${FLATPAK_DEST}/lib/
-      #- cp -r lib/* ${FLATPAK_DEST}/lib64/
     sources:
       - type: git
         url: https://github.com/PortAudio/portaudio.git
@@ -56,10 +49,8 @@ modules:
       - make local
       - mkdir -p ${FLATPAK_DEST}/include
       - mkdir -p ${FLATPAK_DEST}/lib
-      #- mkdir -p ${FLATPAK_DEST}/lib64
       - cp -r install/include/* ${FLATPAK_DEST}/include/
       - cp -r install/lib/* ${FLATPAK_DEST}/lib/
-      #- cp -r install/lib/* ${FLATPAK_DEST}/lib64/
     sources:
       - type: archive 
         url: https://www.lua.org/ftp/lua-5.2.0.tar.gz
@@ -68,18 +59,14 @@ modules:
   - name: snis
     buildsystem: simple
     build-commands:
-      - env
-      - mkdir -p /app/bin
-      - mkdir -p /app/share
-#for portaudio?
-      #- cp -r ${FLATPAK_DEST}/lib/* ${FLATPAK_DEST}/bin/
-      #- cp -r ${FLATPAK_DEST}/lib/* ./
-      #- cp -r ${FLATPAK_DEST}/lib64/* ${FLATPAK_DEST}/lib/
-      - ls -l ${FLATPAK_DEST}/lib/
+      - mkdir -p /app/bin/bin
+      - mkdir -p /app/bin/share
       - make
-  #    - make update-assets
-      - cp -r /run/build/bin/* ${FLATPAK_DEST}/bin/
-      - cp -r /run/build/share/* ${FLATPAK_DEST}/share/
+      - cp -r bin/snis_launcher ${FLATPAK_DEST}/bin/
+      - cp -r bin/* ${FLATPAK_DEST}/bin/bin/
+      - cp -r share/* ${FLATPAK_DEST}/bin/share/
+      - chmod +x ${FLATPAK_DEST}/bin/bin/*
+      #- ls -l ${FLATPAK_DEST}/bin/bin
     sources:
       - type: git
         url: https://github.com/vpelss/space-nerds-in-space.git
