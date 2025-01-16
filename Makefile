@@ -502,11 +502,17 @@ LUALIBS:=$(shell $(PKG_CONFIG) --libs lua)
 LUACFLAGS:=$(shell $(PKG_CONFIG) --cflags lua)
 endif
 
-PNGLIBS:=$(shell $(PKG_CONFIG) --libs libpng)
-PNGCFLAGS:=$(shell $(PKG_CONFIG) --cflags libpng)
+#vinman
+#PNGLIBS:=$(shell $(PKG_CONFIG) --libs libpng)
+#PNGCFLAGS:=$(shell $(PKG_CONFIG) --cflags libpng)
+PNGLIBS:=-lpng16 -lz
+PNGCFLAGS:=''
 
-SDLLIBS:=$(shell $(SDL2_CONFIG) --libs)
-SDLCFLAGS:=$(shell $(SDL2_CONFIG) --cflags)
+#vinman
+#SDLLIBS:=$(shell $(SDL2_CONFIG) --libs)
+#SDLCFLAGS:=$(shell $(SDL2_CONFIG) --cflags)
+SDLLIBS:=-lSDL2
+SDLCFLAGS:=''
 
 #vinman
 #GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
@@ -574,8 +580,12 @@ NEBULANOISELIBS=-lm ${PNGLIBS}
 _GENERATE_SKYBOX_OBJS=generate_skybox.o open-simplex-noise.o png_utils.o mathutils.o quat.o mtwist.o
 GENERATE_SKYBOX_OBJS=$(patsubst %,$(OD)/%,${_GENERATE_SKYBOX_OBJS})
 GENERATE_SKYBOX_LIBS=-lm ${PNGLIBS}
-X11LIBS=$(shell $(PKG_CONFIG) --libs x11)
-X11CFLAGS=$(shell $(PKG_CONFIG) --cflags x11)
+
+#vinman
+#X11LIBS=$(shell $(PKG_CONFIG) --libs x11)
+#X11CFLAGS=$(shell $(PKG_CONFIG) --cflags x11)
+X11LIBS=-lX11
+X11CFLAGS=''
 
 SSGL=ssgl/libssglclient.a
 LIBS=-Lssgl -lssglclient -ldl -lm ${PNGLIBS} ${GLEWLIBS}
@@ -689,7 +699,9 @@ MYCFLAGS=-DPREFIX=${PREFIX} ${DEBUGFLAG} ${PROFILEFLAG} ${OPTIMIZEFLAG} ${UBSANF
 	-fstack-protector-strong -Wimplicit-fallthrough \
 	${COMPSPECCFLAGS} -Wstrict-prototypes
 
-VORBISFLAGS:=$(subst -I,-isystem ,$(shell $(PKG_CONFIG) --cflags vorbisfile))
+#vinman ?
+#VORBISFLAGS:=$(subst -I,-isystem ,$(shell $(PKG_CONFIG) --cflags vorbisfile))
+VORBISFLAGS:=''
 
 ifeq (${WITHVOICECHAT},yes)
 LIBOPUS=-L. -lopus
