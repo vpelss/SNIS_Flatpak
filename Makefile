@@ -453,7 +453,6 @@ endif
 #vinman
 #SNDLIBS:=$(shell $(PKG_CONFIG) --libs portaudio-2.0 vorbisfile)
 #SNDFLAGS:=-DWITHAUDIOSUPPORT $(shell $(PKG_CONFIG) --cflags portaudio-2.0) -DDATADIR=\"${DATADIR}\"
-#SNDLIBS:='-lasound -lm -lpthread -lvorbisfile'
 SNDLIBS:=-lportaudio -lasound -lm -lpthread -lvorbisfile
 SNDFLAGS:=-DWITHAUDIOSUPPORT -pthread -DDATADIR=\"${DATADIR}\"
 _OGGOBJ=ogg_to_pcm.o
@@ -493,9 +492,7 @@ ifeq (${OSX},0)
 #vinman
 #LUALIBS:=$(shell $(PKG_CONFIG) --libs lua5.2 --silence-errors || $(PKG_CONFIG) --libs lua52 --silence-errors || $(PKG_CONFIG) --libs lua --silence-errors || echo '-llua5.2')
 #LUACFLAGS:=$(shell $(PKG_CONFIG) --cflags lua5.2 --silence-errors || $(PKG_CONFIG) --cflags lua52 --silence-errors || $(PKG_CONFIG) --cflags lua --silence-errors || echo '')
-#LUALIBS:=-llua5.2
 LUALIBS:=-llua
-#LUACFLAGS:='-I/usr/include/lua5.2'
 else
 # OSX needs to do it this way (what is the point of pkgconfig if they all do it differently?)
 LUALIBS:=$(shell $(PKG_CONFIG) --libs lua)
@@ -506,20 +503,20 @@ endif
 #PNGLIBS:=$(shell $(PKG_CONFIG) --libs libpng)
 #PNGCFLAGS:=$(shell $(PKG_CONFIG) --cflags libpng)
 PNGLIBS:=-lpng16 -lz
-PNGCFLAGS:=''
+#PNGCFLAGS:=""
 
 #vinman
-#SDLLIBS:=$(shell $(SDL2_CONFIG) --libs)
-#SDLCFLAGS:=$(shell $(SDL2_CONFIG) --cflags)
+SDLLIBS:=$(shell $(SDL2_CONFIG) --libs)
+SDLCFLAGS:=$(shell $(SDL2_CONFIG) --cflags)
 SDLLIBS:=-lSDL2
-SDLCFLAGS:=''
+#SDLCFLAGS:="" 
 
 #vinman
 #GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
 #GLEWCFLAGS:=$(shell $(PKG_CONFIG) --cflags glew)
 # -L/usr/lib64 -lGLEW -lGL -lX11 -lGLU
 GLEWLIBS:=-lGLEW -lGL -lX11 -lGLU
-GLEWCFLAGS:=""
+#GLEWCFLAGS:=""
 
 ifeq ($(OSX), 0)
 	CRYPTLIBS:=-lcrypt
@@ -585,7 +582,7 @@ GENERATE_SKYBOX_LIBS=-lm ${PNGLIBS}
 #X11LIBS=$(shell $(PKG_CONFIG) --libs x11)
 #X11CFLAGS=$(shell $(PKG_CONFIG) --cflags x11)
 X11LIBS=-lX11
-X11CFLAGS=''
+#X11CFLAGS=""
 
 SSGL=ssgl/libssglclient.a
 LIBS=-Lssgl -lssglclient -ldl -lm ${PNGLIBS} ${GLEWLIBS}
@@ -700,8 +697,8 @@ MYCFLAGS=-DPREFIX=${PREFIX} ${DEBUGFLAG} ${PROFILEFLAG} ${OPTIMIZEFLAG} ${UBSANF
 	${COMPSPECCFLAGS} -Wstrict-prototypes
 
 #vinman ?
-#VORBISFLAGS:=$(subst -I,-isystem ,$(shell $(PKG_CONFIG) --cflags vorbisfile))
-VORBISFLAGS:=''
+VORBISFLAGS:=$(subst -I,-isystem ,$(shell $(PKG_CONFIG) --cflags vorbisfile))
+#VORBISFLAGS:=''
 
 ifeq (${WITHVOICECHAT},yes)
 LIBOPUS=-L. -lopus
