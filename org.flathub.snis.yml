@@ -2,7 +2,7 @@ id: org.flathub.snis
 runtime: org.freedesktop.Platform
 runtime-version: "23.08"
 sdk: org.freedesktop.Sdk
-command: snis_launcher
+command: wrappersnis
 
 modules:
 
@@ -42,6 +42,15 @@ modules:
         url: https://github.com/PortAudio/portaudio.git
         commit: 242a024
 
+#?
+  - name: sdl
+    buildsystem: cmake
+    build-commands: 
+    sources:
+      - type: git
+        url: https://github.com/libsdl-org/SDL.git
+        commit: c2dac95
+
   - name: lua
     buildsystem: simple
     build-commands: 
@@ -66,6 +75,7 @@ modules:
       - cp -r bin/* ${FLATPAK_DEST}/bin/bin/
       - cp -r share/* ${FLATPAK_DEST}/bin/share/
       - chmod +x ${FLATPAK_DEST}/bin/bin/*
+      - rm ${FLATPAK_DEST}/bin/bin/snis_launcher 
       #- ls -l ${FLATPAK_DEST}/bin/bin
     sources:
       - type: git
