@@ -91,6 +91,8 @@ modules:
       - type: script
         dest-filename: wrapperbc.sh
         commands:
+          - export SNIS_LOG_DIR=~/snis_log_dir
+          - mkdir $SNIS_LOG_DIR
           - cd /app/bin
           - ./snis_launcher
 
