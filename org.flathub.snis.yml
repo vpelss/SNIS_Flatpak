@@ -71,7 +71,6 @@ modules:
     build-commands:
       - mkdir -p /app/tmp
       # these will be used in snis module
-      #- cp -r snis_launcher /app/tmp
       - cp -r Makefile /app/tmp
       - cp -r share /app/tmp
     sources:
@@ -104,10 +103,10 @@ modules:
       - type: script
         dest-filename: wrapperbc.sh
         commands:
-          - export SNIS_LOG_DIR=~/snis_log_dir
-          - mkdir $SNIS_LOG_DIR
-          #- export SNIS_ASSET_DIR=~/snis_asset_dir
-          #- mkdir $SNIS_ASSET_DIR
+          - export SNIS_LOG_DIR=~/.snis/snis_log_dir
+          - mkdir -p $SNIS_LOG_DIR
+          - export SNIS_DB_DIR=~/.snis/snis_db_dir
+          - mkdir -p $SNIS_DB_DIR
           - cd /app/bin
           - ./snis_launcher
 
@@ -122,5 +121,5 @@ finish-args:
 
 cleanup:
   - bin/bin/snis_launcher
-  - tmp
+  - tmp/*
 
