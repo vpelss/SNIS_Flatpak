@@ -73,6 +73,7 @@ modules:
       # these will be used in snis module
       #- cp -r snis_launcher /app/tmp
       - cp -r Makefile /app/tmp
+      - cp -r share /app/tmp
     sources:
       - type: git
         url: https://github.com/vpelss/snis_flatpak.git
@@ -82,6 +83,7 @@ modules:
     buildsystem: simple
     build-commands:
       - cp -r /app/tmp/Makefile ./
+      - cp -r /app/tmp/share ./
       - mkdir -p /app/bin/bin
       - mkdir -p /app/bin/share
       - make WITHVOICECHAT=no
@@ -120,4 +122,5 @@ finish-args:
 
 cleanup:
   - bin/bin/snis_launcher
+  - tmp
 
