@@ -106,8 +106,8 @@ modules:
         commands:
           - export SNIS_LOG_DIR=~/snis_log_dir
           - mkdir $SNIS_LOG_DIR
-          - export SNIS_ASSET_DIR=~/snis_asset_dir
-          - mkdir $SNIS_ASSET_DIR
+          #- export SNIS_ASSET_DIR=~/snis_asset_dir
+          #- mkdir $SNIS_ASSET_DIR
           - cd /app/bin
           - ./snis_launcher
 

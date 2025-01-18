@@ -1,9 +1,5 @@
 #!/bin/sh
 
-#vinman
-export SNIS_LOG_DIR=~/snis_log_dir
-mkdir $SNIS_LOG_DIR
-
 if [ "$(id -u)" = "0" ]
 then
 	printf "You are root. Do not run this script as root.\n" 1>&2
