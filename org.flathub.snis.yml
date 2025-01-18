@@ -86,7 +86,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/vpelss/snis_assets.git
-        commit: main
+        commit: master
 
   - name: snis
     buildsystem: simple
@@ -113,9 +113,9 @@ modules:
       - type: script
         dest-filename: wrapperbc.sh
         commands:
-          - export SNIS_LOG_DIR=~/.snis/snis_log_dir
+          - export SNIS_LOG_DIR=~/.local/share/space-nerds-in-space/snis_log_dir
           - mkdir -p $SNIS_LOG_DIR
-          - export SNIS_DB_DIR=~/.snis/snis_db_dir
+          - export SNIS_DB_DIR=~/.local/share/space-nerds-in-space/snis_db_dir
           - mkdir -p $SNIS_DB_DIR
           - cd /app/bin
           - ./snis_launcher
@@ -130,6 +130,6 @@ finish-args:
   - --socket=pulseaudio
 
 cleanup:
-  - bin/bin/snis_launcher
-  - tmp/*
+  - /bin/bin/snis_launcher
+  - /tmp
 
