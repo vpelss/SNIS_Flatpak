@@ -1,6 +1,6 @@
 # Space Nerds in Space Flatpak
 
-To install avd run Space Nerds in Space Flatpak, open a linux terminal and type the following (once installed you just need the last line to run):
+To install and run Space Nerds in Space with a Flatpak, open a linux terminal and type the following (once installed you just need the last line to run):
 
 sudo apt install flatpak
 
