@@ -1,6 +1,6 @@
 # To compile with voice chat, WITHVOICECHAT=yes,
 # for no voice chat, make WITHVOICECHAT=no
-WITHVOICECHAT=no
+WITHVOICECHAT=yes
 USE_SNIS_XWINDOWS_HACKS=1
 PKG_CONFIG?=pkg-config
 SDL2_CONFIG?=sdl2-config
@@ -9,8 +9,7 @@ SDL2_CONFIG?=sdl2-config
 OSX=0
 
 # -lrt is only needed for clock_gettime() and only for glibc before 2.17
-#vinman
-#LRTLIB=$(shell ./check_for_lrt.sh -q)
+LRTLIB=$(shell ./check_for_lrt.sh -q)
 
 INSTALL ?= install
 AWK ?= awk
@@ -429,7 +428,8 @@ DOCKING_PORT_FILES=${MODELSRCDIR}/starbase2.docking_ports.h \
 MANSRCDIR=./man
 MANPAGES=${MANSRCDIR}/snis_client.6.gz ${MANSRCDIR}/snis_server.6.gz \
 	${MANSRCDIR}/earthlike.1.gz \
-	${MANSRCDIR}/snis_text_to_speech.sh.6 ${MANSRCDIR}/snis_test_audio.1.gz ssgl/ssgl_server.6 ${MANSRCDIR}/snis_multiverse.6
+	${MANSRCDIR}/snis_text_to_speech.sh.6 ${MANSRCDIR}/snis_test_audio.1.gz ssgl/ssgl_server.6 ${MANSRCDIR}/snis_multiverse.6 \
+	${MANSRCDIR}/snis_update_assets.6
 MANDIR=${DESTDIR}/${PREFIX}/share/man/man6
 
 DESKTOPDIR=${DESTDIR}/${PREFIX}/share/applications
@@ -450,11 +450,8 @@ RDYNAMIC=
 $(echo ${USING_CLANG})
 endif
 
-#vinman
-#SNDLIBS:=$(shell $(PKG_CONFIG) --libs portaudio-2.0 vorbisfile)
-#SNDFLAGS:=-DWITHAUDIOSUPPORT $(shell $(PKG_CONFIG) --cflags portaudio-2.0) -DDATADIR=\"${DATADIR}\"
-SNDLIBS:=-lportaudio -lasound -lm -lpthread -lvorbisfile
-SNDFLAGS:=-DWITHAUDIOSUPPORT -pthread -DDATADIR=\"${DATADIR}\"
+SNDLIBS:=$(shell $(PKG_CONFIG) --libs portaudio-2.0 vorbisfile)
+SNDFLAGS:=-DWITHAUDIOSUPPORT $(shell $(PKG_CONFIG) --cflags portaudio-2.0) -DDATADIR=\"${DATADIR}\"
 _OGGOBJ=ogg_to_pcm.o
 _SNDOBJS=wwviaudio.o
 
@@ -489,34 +486,22 @@ ifeq (${OSX},0)
 # Arch pkg-config seems to be broken for lua5.2, so we have
 # this "... || echo" hack thing.
 #
-#vinman
-#LUALIBS:=$(shell $(PKG_CONFIG) --libs lua5.2 --silence-errors || $(PKG_CONFIG) --libs lua52 --silence-errors || $(PKG_CONFIG) --libs lua --silence-errors || echo '-llua5.2')
-#LUACFLAGS:=$(shell $(PKG_CONFIG) --cflags lua5.2 --silence-errors || $(PKG_CONFIG) --cflags lua52 --silence-errors || $(PKG_CONFIG) --cflags lua --silence-errors || echo '')
-LUALIBS:=-llua
+LUALIBS:=$(shell $(PKG_CONFIG) --libs lua5.2 --silence-errors || $(PKG_CONFIG) --libs lua52 --silence-errors || $(PKG_CONFIG) --libs lua --silence-errors || echo '-llua5.2')
+LUACFLAGS:=$(shell $(PKG_CONFIG) --cflags lua5.2 --silence-errors || $(PKG_CONFIG) --cflags lua52 --silence-errors || $(PKG_CONFIG) --cflags lua --silence-errors || echo '')
 else
 # OSX needs to do it this way (what is the point of pkgconfig if they all do it differently?)
 LUALIBS:=$(shell $(PKG_CONFIG) --libs lua)
 LUACFLAGS:=$(shell $(PKG_CONFIG) --cflags lua)
 endif
 
-#vinman
-#PNGLIBS:=$(shell $(PKG_CONFIG) --libs libpng)
-#PNGCFLAGS:=$(shell $(PKG_CONFIG) --cflags libpng)
-PNGLIBS:=-lpng16 -lz
-#PNGCFLAGS:=""
+PNGLIBS:=$(shell $(PKG_CONFIG) --libs libpng)
+PNGCFLAGS:=$(shell $(PKG_CONFIG) --cflags libpng)
 
-#vinman
 SDLLIBS:=$(shell $(SDL2_CONFIG) --libs)
 SDLCFLAGS:=$(shell $(SDL2_CONFIG) --cflags)
-SDLLIBS:=-lSDL2
-#SDLCFLAGS:="" 
 
-#vinman
-#GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
-#GLEWCFLAGS:=$(shell $(PKG_CONFIG) --cflags glew)
-# -L/usr/lib64 -lGLEW -lGL -lX11 -lGLU
-GLEWLIBS:=-lGLEW -lGL -lX11 -lGLU
-#GLEWCFLAGS:=""
+GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
+GLEWCFLAGS:=$(shell $(PKG_CONFIG) --cflags glew)
 
 ifeq ($(OSX), 0)
 	CRYPTLIBS:=-lcrypt
@@ -577,12 +562,8 @@ NEBULANOISELIBS=-lm ${PNGLIBS}
 _GENERATE_SKYBOX_OBJS=generate_skybox.o open-simplex-noise.o png_utils.o mathutils.o quat.o mtwist.o
 GENERATE_SKYBOX_OBJS=$(patsubst %,$(OD)/%,${_GENERATE_SKYBOX_OBJS})
 GENERATE_SKYBOX_LIBS=-lm ${PNGLIBS}
-
-#vinman
-#X11LIBS=$(shell $(PKG_CONFIG) --libs x11)
-#X11CFLAGS=$(shell $(PKG_CONFIG) --cflags x11)
-X11LIBS=-lX11
-#X11CFLAGS=""
+X11LIBS=$(shell $(PKG_CONFIG) --libs x11)
+X11CFLAGS=$(shell $(PKG_CONFIG) --cflags x11)
 
 SSGL=ssgl/libssglclient.a
 LIBS=-Lssgl -lssglclient -ldl -lm ${PNGLIBS} ${GLEWLIBS}
@@ -608,7 +589,8 @@ MULTIVERSELIBS=-Lssgl -lssglclient ${LRTLIB} -ldl -lm ${CRYPTLIBS}
 
 
 BINPROGS=bin/ssgl_server bin/snis_server bin/snis_client bin/snis_text_to_speech.sh \
-		bin/snis_multiverse bin/lsssgl bin/snis_arduino bin/snis_launcher
+		bin/snis_multiverse bin/lsssgl bin/snis_arduino bin/snis_launcher \
+		bin/snis_update_assets
 UTILPROGS=util/mask_clouds util/cloud-mask-normalmap bin/mesh_viewer util/sample_image_colors \
 		util/generate_solarsystem_positions bin/nebula_noise bin/generate_skybox bin/earthlike
 
@@ -696,9 +678,7 @@ MYCFLAGS=-DPREFIX=${PREFIX} ${DEBUGFLAG} ${PROFILEFLAG} ${OPTIMIZEFLAG} ${UBSANF
 	-fstack-protector-strong -Wimplicit-fallthrough \
 	${COMPSPECCFLAGS} -Wstrict-prototypes
 
-#vinman ?
 VORBISFLAGS:=$(subst -I,-isystem ,$(shell $(PKG_CONFIG) --cflags vorbisfile))
-#VORBISFLAGS:=''
 
 ifeq (${WITHVOICECHAT},yes)
 LIBOPUS=-L. -lopus
@@ -784,14 +764,16 @@ ${BINARY_NAMES}:
 	@echo "You probably meant: make bin/$@" 1>&2
 	@/bin/false
 
-update-assets:
-	@util/snis_update_assets.sh
-
-check-assets:
-	@util/snis_update_assets.sh --dry-run
-
-install-assets:
-	@util/snis_update_assets.sh --localcopy --destdir ${DESTDIR}/${PREFIX}
+# Updating assets is now done via snis_launcher
+#
+# update-assets:
+#	@util/snis_update_assets.sh
+#
+# check-assets:
+#	@util/snis_update_assets.sh --dry-run
+#
+# install-assets:
+#	@util/snis_update_assets.sh --localcopy --destdir ${DESTDIR}/${PREFIX}
 
 build:	all
 
@@ -1379,10 +1361,7 @@ $(OD)/snis_test_audio.o:	snis_test_audio.c Makefile ${SNDOBJS} ${OGGOBJ} ${ODT}
 bin/snis_test_audio:	${OD}/snis_test_audio.o ${SNDLIBS} Makefile ${BIN} ${OD}/mathutils.o ${OD}/mtwist.o
 	$(CC) -o bin/snis_test_audio ${OD}/snis_test_audio.o ${SNDOBJS} ${OGGOBJ} ${SNDLIBS} ${OD}/mathutils.o ${OD}/mtwist.o -lm -lbsd
 
-install:	${BINPROGS} ${MODELS} ${AUDIOFILES} ${TEXTURES} \
-		${MATERIALS} ${CONFIGFILES} ${SHADERS} ${LUASCRIPTS} ${LUAUTILS} \
-		${LUAMISSIONS} ${LUASRCLIBS} ${LUATESTS} ${MANPAGES} ${SSGL} \
-		${SOLARSYSTEMFILES}
+install:	${BINPROGS} ${MANPAGES} ${SSGL}
 	@# First check that PREFIX is sane, and esp. that it's not pointed at source
 	@mkdir -p ${DESTDIR}/${PREFIX}
 	@touch ${DESTDIR}/${PREFIX}/.canary-in-the-coal-mine.canary
@@ -1404,48 +1383,50 @@ install:	${BINPROGS} ${MODELS} ${AUDIOFILES} ${TEXTURES} \
 		{ print; } ' < snis_launcher > /tmp/snis_launcher
 	${INSTALL} -m 755 /tmp/snis_launcher ${DESTDIR}/${PREFIX}/bin
 	rm -f /tmp/snis_launcher
-	for d in ${MATERIALDIR} ${LUASCRIPTDIR}/UTIL ${LUASCRIPTDIR}/TEST \
-		${LUASCRIPTDIR}/MISSIONS ${LUASCRIPTDIR}/MISSIONS/lib ${SHADERDIR} ${SOUNDDIR} \
-		${TEXTUREDIR} ${MODELDIR}/wombat ${SHADERDIR} ; do \
-		mkdir -p $$d ; \
-	done
-	${INSTALL} -m 644 ${CONFIGFILES} ${CONFIGFILEDIR}
-	${INSTALL} -m 644 ${SOUNDFILES} ${SOUNDDIR}
-	${INSTALL} -m 644 ${TEXTUREFILES} ${TEXTUREDIR}
-	${INSTALL} -m 644  ${LUASCRIPTS} ${LUASCRIPTDIR}
-	${INSTALL} -m 644  ${LUAUTILS} ${LUASCRIPTDIR}/UTIL
-	${INSTALL} -m 644  ${LUAMISSIONS} ${LUASCRIPTDIR}/MISSIONS
-	${INSTALL} -m 644  ${LUASRCLIBS} ${LUASCRIPTDIR}/MISSIONS/lib
-	${INSTALL} -m 644  ${LUATESTS} ${LUASCRIPTDIR}/TEST
-	${INSTALL} -m 644  ${MATERIALFILES} ${MATERIALDIR}
-	${INSTALL} -m 644  ${MODELS} ${MODELDIR}
-	mkdir -p ${SOLARSYSTEMDIR}/default
-	${INSTALL} -m 644 ${SOLARSYSTEMSRCDIR}/default/assets.txt ${SOLARSYSTEMDIR}/default
-	for d in dreadknight disruptor conqueror enforcer starbase starbase2 cargocontainer research-vessel ; do \
-		mkdir -p ${MODELDIR}/$$d ; \
-		${INSTALL} -m 644 ${MODELSRCDIR}/$$d/$$d.mtl ${MODELDIR}/$$d ; \
-		cp ${MODELSRCDIR}/$$d/$$d.obj ${MODELDIR}/$$d ; \
-		cp ${MODELSRCDIR}/$$d/$$d.png ${MODELDIR}/$$d ; \
-		if [ -f ${MODELSRCDIR}/$$d/$$d"lights.png" ] ; then \
-			cp ${MODELSRCDIR}/$$d/$$d"lights.png" ${MODELDIR}/$$d ; \
-		fi ; \
-		if [ -f ${MODELSRCDIR}/$$d/$$d"-lighting.png" ] ; then \
-			cp ${MODELSRCDIR}/$$d/$$d"-lighting.png" ${MODELDIR}/$$d ; \
-		fi ; \
-	done
-	${INSTALL} -m 644 ${MODELSRCDIR}/dreadknight/dreadknight-exhaust-plumes.h ${MODELDIR}/dreadknight
-	${INSTALL} -m 644 ${MODELSRCDIR}/wombat/snis3006lights.png ${MODELDIR}/wombat
-	${INSTALL} -m 644 ${MODELSRCDIR}/wombat/snis3006.mtl ${MODELDIR}/wombat
-	${INSTALL} -m 644 ${MODELSRCDIR}/wombat/snis3006.obj ${MODELDIR}/wombat
-	${INSTALL} -m 644 ${MODELSRCDIR}/wombat/snis3006.png ${MODELDIR}/wombat
-	${INSTALL} -m 644 ${DOCKING_PORT_FILES} ${MODELDIR}
-	${INSTALL} -m 644 ${SCAD_PARAMS_FILES} ${MODELDIR}
-	${INSTALL} -m 644 ${SHADERS} ${SHADERDIR}
+	# for d in ${MATERIALDIR} ${LUASCRIPTDIR}/UTIL ${LUASCRIPTDIR}/TEST \
+	#	${LUASCRIPTDIR}/MISSIONS ${LUASCRIPTDIR}/MISSIONS/lib ${SHADERDIR} ${SOUNDDIR} \
+	#	${TEXTUREDIR} ${MODELDIR}/wombat ${SHADERDIR} ; do \
+	#	mkdir -p $$d ; \
+	# done
+	# ${INSTALL} -m 644 ${CONFIGFILES} ${CONFIGFILEDIR}
+	# ${INSTALL} -m 644 ${SOUNDFILES} ${SOUNDDIR}
+	# ${INSTALL} -m 644 ${TEXTUREFILES} ${TEXTUREDIR}
+	# ${INSTALL} -m 644  ${LUASCRIPTS} ${LUASCRIPTDIR}
+	# ${INSTALL} -m 644  ${LUAUTILS} ${LUASCRIPTDIR}/UTIL
+	# ${INSTALL} -m 644  ${LUAMISSIONS} ${LUASCRIPTDIR}/MISSIONS
+	# ${INSTALL} -m 644  ${LUASRCLIBS} ${LUASCRIPTDIR}/MISSIONS/lib
+	# ${INSTALL} -m 644  ${LUATESTS} ${LUASCRIPTDIR}/TEST
+	# ${INSTALL} -m 644  ${MATERIALFILES} ${MATERIALDIR}
+	# ${INSTALL} -m 644  ${MODELS} ${MODELDIR}
+	# mkdir -p ${SOLARSYSTEMDIR}/default
+	# ${INSTALL} -m 644 ${SOLARSYSTEMSRCDIR}/default/assets.txt ${SOLARSYSTEMDIR}/default
+	# for d in dreadknight disruptor conqueror enforcer starbase starbase2 cargocontainer research-vessel ; do \
+	#	mkdir -p ${MODELDIR}/$$d ; \
+	#	${INSTALL} -m 644 ${MODELSRCDIR}/$$d/$$d.mtl ${MODELDIR}/$$d ; \
+	#	cp ${MODELSRCDIR}/$$d/$$d.obj ${MODELDIR}/$$d ; \
+	#	cp ${MODELSRCDIR}/$$d/$$d.png ${MODELDIR}/$$d ; \
+	#	if [ -f ${MODELSRCDIR}/$$d/$$d"lights.png" ] ; then \
+	#		cp ${MODELSRCDIR}/$$d/$$d"lights.png" ${MODELDIR}/$$d ; \
+	#	fi ; \
+	#	if [ -f ${MODELSRCDIR}/$$d/$$d"-lighting.png" ] ; then \
+	#		cp ${MODELSRCDIR}/$$d/$$d"-lighting.png" ${MODELDIR}/$$d ; \
+	#	fi ; \
+	#done
+	#${INSTALL} -m 644 ${MODELSRCDIR}/dreadknight/dreadknight-exhaust-plumes.h ${MODELDIR}/dreadknight
+	#${INSTALL} -m 644 ${MODELSRCDIR}/wombat/snis3006lights.png ${MODELDIR}/wombat
+	#${INSTALL} -m 644 ${MODELSRCDIR}/wombat/snis3006.mtl ${MODELDIR}/wombat
+	#${INSTALL} -m 644 ${MODELSRCDIR}/wombat/snis3006.obj ${MODELDIR}/wombat
+	#${INSTALL} -m 644 ${MODELSRCDIR}/wombat/snis3006.png ${MODELDIR}/wombat
+	#${INSTALL} -m 644 ${DOCKING_PORT_FILES} ${MODELDIR}
+	#${INSTALL} -m 644 ${SCAD_PARAMS_FILES} ${MODELDIR}
+	#${INSTALL} -m 644 ${SHADERS} ${SHADERDIR}
 	mkdir -p ${MANDIR}
 	${INSTALL} -m 644 ${MANPAGES} ${MANDIR}
 	mkdir -p ${DESKTOPDIR}
 	${INSTALL} -m 644 ${DESKTOPFILES} ${DESKTOPDIR}
 	${UPDATE_DESKTOP}
+	mkdir -p ${PREFIX}/share/snis
+	bin/snis_update_assets --force --destdir ${PREFIX} --srcdir ./share/snis
 
 uninstall:
 	@# check that PREFIX is sane
@@ -1495,6 +1476,9 @@ bin/check-endianness:	check-endianness.c Makefile ${BIN}
 	@echo "  COMPILE check-endianness.c"
 	$(Q)$(CC) -o bin/check-endianness check-endianness.c
 
+bin/snis_update_assets:	util/snis_update_assets.c string-utils.o
+	$(Q)$(CC) -o bin/snis_update_assets util/snis_update_assets.c string-utils.o -lcrypto -lcurl
+
 build_info.h: bin/check-endianness snis.h gather_build_info Makefile
 	@echo "  GATHER BUILD INFO"
 	$(Q)@./gather_build_info > build_info.h
@@ -1508,8 +1492,6 @@ scan-build:
 	util/run-scan-build /tmp/snis-scan-build-output
 	xdg-open /tmp/snis-scan-build-output/*/index.html
 
-#vinman
-ifeq ("x","y")
 # opus stuff for voice chat
 opus-1.3.1.tar.gz:
 	wget https://archive.mozilla.org/pub/opus/opus-1.3.1.tar.gz
@@ -1520,6 +1502,5 @@ opus-1.3.1:	opus-1.3.1.tar.gz
 
 libopus.a:	opus-1.3.1
 	(cd opus-1.3.1 && ./configure && make && cp ./.libs/libopus.a ..)
-endif
 
 include Makefile.depend
