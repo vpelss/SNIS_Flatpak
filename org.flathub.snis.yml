@@ -82,7 +82,7 @@ modules:
     build-commands:
       - mkdir -p /app/tmp
       # these will be used in snis module
-      #- cp -r share /app/tmp
+      - cp -r share /app/tmp
     sources:
       - type: git
         url: https://github.com/vpelss/snis_assets.git
