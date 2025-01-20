@@ -498,12 +498,18 @@ endif
 
 PNGLIBS:=$(shell $(PKG_CONFIG) --libs libpng)
 PNGCFLAGS:=$(shell $(PKG_CONFIG) --cflags libpng)
+#vinman
+PNGLIBS:=-lpng16 -lz
 
 SDLLIBS:=$(shell $(SDL2_CONFIG) --libs)
 SDLCFLAGS:=$(shell $(SDL2_CONFIG) --cflags)
+#vinman
+SDLLIBS:=-lSDL2
 
 GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
 GLEWCFLAGS:=$(shell $(PKG_CONFIG) --cflags glew)
+#vinman
+GLEWLIBS:=-lGLEW -lGL -lX11 -lGLU
 
 ifeq ($(OSX), 0)
 	CRYPTLIBS:=-lcrypt
