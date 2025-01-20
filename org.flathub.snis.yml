@@ -42,15 +42,6 @@ modules:
         url: https://github.com/PortAudio/portaudio.git
         commit: 242a024
 
-#?
-  - name: sdl
-    buildsystem: cmake
-    build-commands: 
-    sources:
-      - type: git
-        url: https://github.com/libsdl-org/SDL.git
-        commit: c2dac95
-
   - name: lua
     buildsystem: simple
     build-commands: 
@@ -77,26 +68,13 @@ modules:
         url: https://github.com/vpelss/snis_flatpak.git
         commit: main
 
-  - name: snis_assets
-    buildsystem: simple
-    build-commands:
-      - mkdir -p /app/tmp
-      # these will be used in snis module
-      - cp -r share /app/tmp
-    sources:
-      - type: git
-        url: https://github.com/vpelss/snis_assets.git
-        commit: master
-
   - name: snis
     buildsystem: simple
     build-commands:
       - mkdir -p /app/bin/bin
       - mkdir -p /app/bin/share
       - cp -r /app/tmp/Makefile ./
-      #- cp -r /app/tmp/share ./
       - make WITHVOICECHAT=no
-      - ls -l bin
       - cp -r bin/snis_launcher ${FLATPAK_DEST}/bin/
       - cp -r bin/* ${FLATPAK_DEST}/bin/bin/
       - cp -r share/* ${FLATPAK_DEST}/bin/share/
@@ -114,22 +92,18 @@ modules:
       - type: script
         dest-filename: wrapperbc.sh
         commands:
-          #- export SNIS_LOG_DIR=~/.local/share/space-nerds-in-space/snis_log_dir
-          #- mkdir -p $SNIS_LOG_DIR
-          #- export SNIS_DB_DIR=~/.local/share/space-nerds-in-space/snis_db_dir
-          #- mkdir -p $SNIS_DB_DIR
           - cd /app/bin
           - ./snis_launcher
 
 finish-args:
-  - --allow=multiarch
+  #- --allow=multiarch
   - --socket=fallback-x11
   - --share=ipc
   - --device=dri
   - --share=network
-  #- --persist=.
-  - --filesystem=home
-  - --filesystem=~/.var/app
+  #- --persist=. :create
+  #- --filesystem=~/.local/share/space-nerds-in-space :create
+  #- --filesystem=~/.var/app
   - --socket=pulseaudio
 
 cleanup:
