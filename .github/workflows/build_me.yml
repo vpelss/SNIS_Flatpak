@@ -1,6 +1,6 @@
-on:
+on: workflow_dispatch
   push:
-    branches: workflow_dispatch
+    branches: [main]
   pull_request:
 name: CI
 jobs:
@@ -15,5 +15,5 @@ jobs:
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
         bundle: palette.flatpak
-        manifest-path: org.flathub.snis.yml
+        manifest-path: org.gnome.zbrown.Palette.yml
         cache-key: flatpak-builder-${{ github.sha }}
