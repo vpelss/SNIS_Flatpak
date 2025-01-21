@@ -19,6 +19,7 @@ jobs:
     - name: See
       run: |   
         ls -l
+        ls -l repo
         #sudo apt install libfuse2 #required to build AppImage
 
     - name: Upload Artifacts
