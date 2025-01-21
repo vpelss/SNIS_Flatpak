@@ -25,9 +25,9 @@ jobs:
       uses: flatpak/flatpak-github-actions@v2
       with:
       # The relative path of the manifest file.
-      manifest-path: ../../../org.flathub.snis.yml
+      manifest-path: ../../org.flathub.snis.yml
       # The bundle name, by default it's app.flatpak
-      bundle: app.flatpak # optional, default is app.flatpak
+      bundle: app.flatpak.snis # optional, default is app.flatpak
       # The repository used to fetch the runtime when the user downloads the Flatpak bundle.
 
       runtime-repo: https://flathub.org/repo/flathub.flatpakrepo # optional, default is https://flathub.org/repo/flathub.flatpakrepo
@@ -35,7 +35,7 @@ jobs:
 
       run-tests: # optional, default is false
       # The flatpak branch
-      branch: # optional, default is master
+      branch: main # optional, default is master
     
 
     - name: Configure MakeIt
