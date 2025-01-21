@@ -27,6 +27,10 @@ jobs:
       with:
         name: org.flathub.snis 
         path: org.flathub.snis
+
+      with:
+          name: repo to github
+          path: repo          
  
     - name: upload binaries to release
       uses: softprops/action-gh-release@v2
