@@ -24,17 +24,13 @@ jobs:
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
-      with:
-        name: org.flathub.snis 
-        path: org.flathub.snis
 
       with:
           name: repo to github
           path: repo          
  
-    - name: upload binaries to release
-      uses: softprops/action-gh-release@v2
-      #if: ${{startsWith(github.ref, 'refs/tags/') }}
-      with:
-          tag_name: "try_me"
-          files: org.flathub.snis
+    #- name: upload binaries to release
+     # uses: softprops/action-gh-release@v2
+#      with:
+ #         tag_name: "try_me"
+  #        files: org.flathub.snis
