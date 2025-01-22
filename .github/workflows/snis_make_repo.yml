@@ -8,7 +8,7 @@ jobs:
     container:
       image: bilelmoussaoui/flatpak-github-actions:gnome-44
       #need user 1001 for git
-      options: --privileged --user 1001
+      options: --privileged
     steps:
     - uses: actions/checkout@v3
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
