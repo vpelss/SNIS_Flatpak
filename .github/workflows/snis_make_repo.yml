@@ -27,4 +27,7 @@ jobs:
       run: git commit -m "commiting" -a 
     - name: push
       run: git push
-       
+    - name: fetch from master
+      run: git fetch origin master
+    - name: push code to master
+      run: git push origin HEAD:master      
