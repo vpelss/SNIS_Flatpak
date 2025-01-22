@@ -55,20 +55,13 @@ jobs:
         branch: ${{ github.ref }}
         
     #- name: safe
-     # run: git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
-    #- name: sagfe too
-     # run: git config --global --add safe.directory /github/workspace
-    #- name: switching from HTTPS to SSH
-     # run: git remote set-url origin ${{ github.repositoryUrl }}
-    #- name: check for changes
-     # run: git status
-    #- name: add
-     # run: git add -f repo/*
-    #- name: commit 
-     # run: git commit -m "commiting" -a 
-    #- name: push
-     # run: git push
-    #- name: fetch from master
-     # run: git fetch origin master
-    #- name: push code to master
-     # run: git push origin HEAD:master      
+     # run: |
+       #git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
+       #git config --global --add safe.directory /github/workspace
+       #git remote set-url origin ${{ github.repositoryUrl }}
+       #git status
+       #git add -f repo/*
+       #git commit -m "commiting" -a 
+       #git push
+       #git fetch origin master
+       #git push origin HEAD:master      
