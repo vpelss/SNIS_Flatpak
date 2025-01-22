@@ -10,7 +10,7 @@ jobs:
       #need user 1001 for git
       options: --privileged --user 1001
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
         bundle: org.flathub.snis
