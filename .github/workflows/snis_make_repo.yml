@@ -9,7 +9,7 @@ jobs:
       image: bilelmoussaoui/flatpak-github-actions:gnome-44
       options: --privileged
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
         bundle: org.flathub.snis
@@ -30,8 +30,8 @@ jobs:
     #  run: git remote set-url origin ${{ secrets.ssh }}
     - name: check for changes
       run: git status
-    - name: safe
-      run: git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
+    #- name: safe
+     # run: git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
     - name: add
       run: git add -a repo
     - name: commit 
