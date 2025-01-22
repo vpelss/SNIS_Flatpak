@@ -81,6 +81,7 @@ jobs:
        #git fetch origin master
        #git push origin HEAD:master      
 
+    # https://github.com/orgs/community/discussions/25234
     - name: Generate coverage badge
       #working-directory: ./app
       run: |
