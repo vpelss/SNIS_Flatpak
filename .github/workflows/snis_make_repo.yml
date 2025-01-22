@@ -31,7 +31,7 @@ jobs:
     - name: sagfe too
       run: git config --global --add safe.directory /github/workspace
     - name: switching from HTTPS to SSH
-      run: git remote set-url origin ${{ secrets.ssh }}
+      run: git remote set-url origin ${{ github.repositoryUrl }}
     - name: check for changes
       run: git status
     - name: add
