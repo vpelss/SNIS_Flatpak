@@ -19,8 +19,17 @@ jobs:
     - name: See
       run: |   
         ls -l
+        echo "repo"
         ls -l repo
-        ls -l ..
+        echo ".."
+        ls -l ../
+        echo "../../"
+        ls -l ../../
+        
+    - name: switching from HTTPS to SSH
+      run: git remote set-url origin ${{ secrets.ssh }}
+    - name: check for changes
+      run: git status
     - name: add
       run: git add -a repo
     - name: commit 
