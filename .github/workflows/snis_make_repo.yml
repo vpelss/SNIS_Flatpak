@@ -44,7 +44,8 @@ jobs:
     #https://github.com/ad-m/github-push-action
     - name: Commit files
       run: |
-        git config user.email "${{ secrets.email }}"
+        git config --global user.email user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        # "${{ secrets.email }}"
         git config user.name "${{ secrets.name }}"
         git add -f repo/*
         git commit -a -m "Add changes"
