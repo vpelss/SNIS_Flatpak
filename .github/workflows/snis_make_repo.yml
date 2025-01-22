@@ -92,7 +92,7 @@ jobs:
         git add -f repo/*
         git commit -m "I am commited"
         #git remote set-url origin https://${{ secrets.email }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        git remote set-url origin https://github.com/${{ github.repository }}
+        git remote set-url origin https://git@github.com/${{ github.repository }}
         ls -l
         #git remote add origin https://${{ secrets.email }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
         git push origin main       
