@@ -71,9 +71,9 @@ jobs:
         
     - name: safe
       run: |
-       git remote set-url origin ${{ secrets.login }}
        git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
        git config --global --add safe.directory /github/workspace
+       git remote set-url origin ${{ secrets.login }}
        git status
        git add -f repo/*
        git commit -m "commiting" -a 
