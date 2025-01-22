@@ -8,6 +8,8 @@ sudo flatpak install -v https://vpelss.github.io/snis_flatpak/org.flathub.snis.f
 
 flatpak run org.flathub.snis
 
+-----------------
+
 built using: https://github.com/marketplace/actions/flatpak-builder
 
 
