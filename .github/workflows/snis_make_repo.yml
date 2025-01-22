@@ -26,12 +26,14 @@ jobs:
         echo "../../"
         ls -l ../../
         
-   # - name: switching from HTTPS to SSH
-    #  run: git remote set-url origin ${{ secrets.ssh }}
+    - name: safe
+      run: git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
+    - name: sagfe too
+      run: git config --global --add safe.directory /github/workspace
+    - name: switching from HTTPS to SSH
+      run: git remote set-url origin ${{ secrets.ssh }}
     - name: check for changes
       run: git status
-    #- name: safe
-     # run: git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
     - name: add
       run: git add -a repo
     - name: commit 
