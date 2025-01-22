@@ -9,7 +9,12 @@ jobs:
       image: bilelmoussaoui/flatpak-github-actions:gnome-44
       options: --privileged
     steps:
+    
     - uses: actions/checkout@v4
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+        fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
         bundle: org.flathub.snis
@@ -25,22 +30,34 @@ jobs:
         ls -l ../
         echo "../../"
         ls -l ../../
+
+    #https://github.com/ad-m/github-push-action
+    - name: Commit files
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -a -m "Add changes"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
         
-    - name: safe
-      run: git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
-    - name: sagfe too
-      run: git config --global --add safe.directory /github/workspace
-    - name: switching from HTTPS to SSH
-      run: git remote set-url origin ${{ github.repositoryUrl }}
-    - name: check for changes
-      run: git status
-    - name: add
-      run: git add -f repo/*
-    - name: commit 
-      run: git commit -m "commiting" -a 
-    - name: push
-      run: git push
-    - name: fetch from master
-      run: git fetch origin master
-    - name: push code to master
-      run: git push origin HEAD:master      
+    #- name: safe
+     # run: git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
+    #- name: sagfe too
+     # run: git config --global --add safe.directory /github/workspace
+    #- name: switching from HTTPS to SSH
+     # run: git remote set-url origin ${{ github.repositoryUrl }}
+    #- name: check for changes
+     # run: git status
+    #- name: add
+     # run: git add -f repo/*
+    #- name: commit 
+     # run: git commit -m "commiting" -a 
+    #- name: push
+     # run: git push
+    #- name: fetch from master
+     # run: git fetch origin master
+    #- name: push code to master
+     # run: git push origin HEAD:master      
