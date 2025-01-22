@@ -37,25 +37,25 @@ jobs:
         ls -l ../../
 
     #https://github.com/ad-m/github-push-action
-    - name: Commit files
-      run: |
+    #- name: Commit files
+     # run: |
         #git init
-        git config --global user.email user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        #git config --global user.email user.email "41898282+github-actions[bot]@users.noreply.github.com"
         # "${{ secrets.email }}"
-        git config user.name "${{ secrets.name }}"
-        git add -f repo/*
-        git commit -a -m "Add changes"
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
+        #git config user.name "${{ secrets.name }}"
+        #git add -f repo/*
+        #git commit -a -m "Add changes"
+    #- name: Push changes
+     # uses: ad-m/github-push-action@master
+      #with:
+       # github_token: ${{ secrets.GITHUB_TOKEN }}
+        #branch: ${{ github.ref }}
 
-    - name: safe
-      run: |
+    #- name: safe
+      #run: |
        #git remote set-url origin ${{ github.repositoryUrl }}
-       git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
-       git config --global --add safe.directory /github/workspace
+       #git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
+       #git config --global --add safe.directory /github/workspace
 
     # OR https://github.com/orgs/community/discussions/68891
     #- name: Make and push changes
@@ -69,12 +69,14 @@ jobs:
         
 
         
-    #- name: safe
-     # run: |
-       #git remote set-url origin ${{ github.repositoryUrl }}
-       #git status
-       #git add -f repo/*
-       #git commit -m "commiting" -a 
-       #git push
-       #git fetch origin master
-       #git push origin HEAD:master      
+    - name: safe
+      run: |
+       git remote set-url origin ${{ secret.ssh }}
+       git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
+       git config --global --add safe.directory /github/workspace
+       git status
+       git add -f repo/*
+       git commit -m "commiting" -a 
+       git push
+       git fetch origin master
+       git push origin HEAD:master      
