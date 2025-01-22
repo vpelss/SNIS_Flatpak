@@ -1,7 +1,5 @@
 on: workflow_dispatch
-
 name: SNIS_make_repo
-
 jobs:
   flatpak:
     name: "Flatpak"
@@ -9,81 +7,23 @@ jobs:
     permissions:                # Job-level permissions configuration starts here
       contents: write           # 'write' access to repository contents
       pull-requests: write      # 'write' access to pull requests
-
     container:
       image: bilelmoussaoui/flatpak-github-actions:gnome-44
       options: --privileged
-    steps:
-    
+    steps:  
     - uses: actions/checkout@v4
       with:
         persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
-    
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
         bundle: org.flathub.snis
         manifest-path: org.flathub.snis.yml
         cache-key: flatpak-builder-${{ github.sha }}
-
     - name: See
       run: |   
         ls -l
-        echo "repo"
-        ls -l repo
-        echo ".."
-        ls -l ../
-        echo "../../"
-        ls -l ../../
-
-    #https://github.com/ad-m/github-push-action
-    #- name: Commit files
-     # run: |
-        #git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
-        #git config --global --add safe.directory /github/workspace
-        #git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        #git config user.name "${{ secrets.name }}"
-        #git add -f repo/*
-        #git commit -a -m "Add changes"
-    #- name: Push changes
-     # uses: ad-m/github-push-action@master
-      #with:
-       # github_token: ${{ secrets.GITHUB_TOKEN }}
-        #branch: ${{ github.ref }}
-
-    #- name: safe
-      #run: |
-       #git remote set-url origin ${{ github.repositoryUrl }}
-       #git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
-       #git config --global --add safe.directory /github/workspace
-
-    # OR https://github.com/orgs/community/discussions/68891
-    #- name: Make and push changes
-     # run: |
-      #  echo "1.0.0" > VERSION
-       # git config user.email "${{ secrets.email }}"
-        #git config user.name "${{ secrets.name }}"
-        #git add .
-        #git commit -m "create version file"
-        #git push
-                
-    #- name: safe
-     # run: |
-      # git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
-       #git config --global --add safe.directory /github/workspace
-       #git config --global user.email  ${{ secrets.email }}
-       #git config --global user.name  ${{ secrets.name }}
-       #git remote set-url origin ${{ secrets.login }}
-       #git status
-       #git add -f repo/*
-       #git commit -m "commiting" -a 
-       #git push
-       #git fetch origin master
-       #git push origin HEAD:master      
-
-    # https://github.com/orgs/community/discussions/25234
-    - name: Generate coverage badge
-      #working-directory: ./app
+    - name: Send to my git
       run: |
         git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
         git config --global --add safe.directory /github/workspace
@@ -91,8 +31,9 @@ jobs:
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git add -f repo/*
         git commit -m "I am commited"
-        #git remote set-url origin https://${{ secrets.email }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
         git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        ls -l
-        #git remote add origin https://${{ secrets.email }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        git push origin main       
+        git push origin main     
+        
+      # https://github.com/ad-m/github-push-action
+      # https://github.com/orgs/community/discussions/68891
+      # https://github.com/orgs/community/discussions/25234
