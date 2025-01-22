@@ -39,7 +39,7 @@ jobs:
     #https://github.com/ad-m/github-push-action
     - name: Commit files
       run: |
-        git init
+        #git init
         git config --global user.email user.email "41898282+github-actions[bot]@users.noreply.github.com"
         # "${{ secrets.email }}"
         git config user.name "${{ secrets.name }}"
