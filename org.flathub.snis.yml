@@ -1,4 +1,4 @@
-id: org.flathub.snis
+id: io.github.vpelss.snis_flatpak
 runtime: org.freedesktop.Platform
 runtime-version: "23.08"
 sdk: org.freedesktop.Sdk
