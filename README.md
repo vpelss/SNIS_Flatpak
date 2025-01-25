@@ -12,9 +12,9 @@ To install and run Space Nerds in Space with a Flatpak, open a linux terminal an
 
 sudo apt install flatpak
 
-sudo flatpak install -v https://vpelss.github.io/snis_flatpak/org.flathub.snis.flatpakref
+sudo flatpak install -v https://vpelss.github.io/snis_flatpak/io.github.vpelss.snis_flatpak.flatpakref
 
-flatpak run org.flathub.snis
+flatpak run io.github.vpelss.snis_flatpak
 
 We also have an AppImage version:
 
