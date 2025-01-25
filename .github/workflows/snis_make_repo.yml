@@ -17,8 +17,8 @@ jobs:
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
-        bundle: org.flathub.snis
-        manifest-path: org.flathub.snis.yml
+        bundle: io.github.vpelss.snis_flatpak
+        manifest-path: io.github.vpelss.snis_flatpak.yml
         cache-key: flatpak-builder-${{ github.sha }}
     - name: See
       run: |   
