@@ -10,8 +10,12 @@ Or:
 
 To install and run Space Nerds in Space with a Flatpak, open a linux terminal and type the following (once installed you just need the last line to run):
 
-Install flathub, if required as per: 
+Install flatpak for your lixux distro, if required as per: 
 https://flatpak.org/setup/
+
+Usually:
+- sudo apt install flatpak
+- flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 flatpak install -v https://vpelss.github.io/snis_flatpak/io.github.vpelss.snis_flatpak.flatpakref
 
