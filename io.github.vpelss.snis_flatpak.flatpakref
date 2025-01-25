@@ -3,6 +3,6 @@ Title=Space Nerds in Space
 Name=io.github.vpelss.snis_flatpak
 Branch=master
 Url=https://vpelss.github.io/snis_flatpak/repo
-SuggestRemoteName=snisRemote
+SuggestRemoteName=snis_Remote
 RuntimeRepo=https://dl.flathub.org/repo/flathub.flatpakrepo
 IsRuntime=false
