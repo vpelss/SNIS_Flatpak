@@ -17,9 +17,11 @@ Usually:
 - sudo apt install flatpak
 - flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-flatpak install -v https://vpelss.github.io/snis_flatpak/io.github.vpelss.snis_flatpak.flatpakref
+Then install Space Nerds In Spae:
+- flatpak install -v https://vpelss.github.io/snis_flatpak/io.github.vpelss.snis_flatpak.flatpakref
 
-flatpak run io.github.vpelss.snis_flatpak
+Then run it:
+- flatpak run io.github.vpelss.snis_flatpak
 
 We also have an AppImage version:
 
