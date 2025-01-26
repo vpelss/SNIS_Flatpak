@@ -1,6 +1,6 @@
 # Space Nerds in Space Flatpak
 
- *******CURENTLY BROKEN. PLEASE STAND BY**********
+-----CURENTLY BROKEN. PLEASE STAND BY-------
 
 Space Nerds in Space is a linux only space bridge simulator.
 
