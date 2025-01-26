@@ -506,6 +506,7 @@ SDLCFLAGS:=$(shell $(SDL2_CONFIG) --cflags)
 #vinman
 SDLLIBS:=-lSDL2
 
+echo "glew there?"
 GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
 GLEWCFLAGS:=$(shell $(PKG_CONFIG) --cflags glew)
 echo "${GLEWLIBS} glew here?"
