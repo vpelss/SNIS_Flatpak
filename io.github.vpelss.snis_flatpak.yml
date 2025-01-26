@@ -79,8 +79,8 @@ modules:
       - ls -l ${FLATPAK_DEST}/lib/pkgconfig
       - mkdir -p /app/bin/bin
       - mkdir -p /app/bin/share
-      - cp -r /app/tmp/Makefile ./
-      - make WITHVOICECHAT=no LUALIBS=-llua66
+      #- cp -r /app/tmp/Makefile ./
+      - make WITHVOICECHAT=no LUALIBS=-llua GLEWLIBS="-lGLEW -lGL -lX11 -lGLU"
       - cp -r bin/snis_launcher ${FLATPAK_DEST}/bin/
       - cp -r bin/* ${FLATPAK_DEST}/bin/bin/
       - cp -r share/* ${FLATPAK_DEST}/bin/share/
