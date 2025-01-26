@@ -450,7 +450,6 @@ RDYNAMIC=
 $(echo ${USING_CLANG})
 endif
 
-$(info before pulseaudio)
 SNDLIBS:=$(shell $(PKG_CONFIG) --libs portaudio-2.0 vorbisfile)
 $(info after puseaudio $(SNNDLIBS)) 
 SNDFLAGS:=-DWITHAUDIOSUPPORT $(shell $(PKG_CONFIG) --cflags portaudio-2.0) -DDATADIR=\"${DATADIR}\"
@@ -489,7 +488,8 @@ ifeq (${OSX},0)
 # this "... || echo" hack thing.
 #
 #vinman
-#LUALIBS:=$(shell $(PKG_CONFIG) --libs lua5.2 --silence-errors || $(PKG_CONFIG) --libs lua52 --silence-errors || $(PKG_CONFIG) --libs lua --silence-errors || echo '-llua5.2')
+LUALIBS:=$(shell $(PKG_CONFIG) --libs lua5.2 --silence-errors || $(PKG_CONFIG) --libs lua52 --silence-errors || $(PKG_CONFIG) --libs lua --silence-errors || echo '-llua5.2')
+$(info after lua $(LUALIBS)) 
 #LUACFLAGS:=$(shell $(PKG_CONFIG) --cflags lua5.2 --silence-errors || $(PKG_CONFIG) --cflags lua52 --silence-errors || $(PKG_CONFIG) --cflags lua --silence-errors || echo '')
 LUALIBS:=-llua
 else
@@ -500,15 +500,16 @@ endif
 
 PNGLIBS:=$(shell $(PKG_CONFIG) --libs libpng)
 PNGCFLAGS:=$(shell $(PKG_CONFIG) --cflags libpng)
+$(info after png $(PNGLIBS)) 
 #vinman
 PNGLIBS:=-lpng16 -lz
 
 SDLLIBS:=$(shell $(SDL2_CONFIG) --libs)
 SDLCFLAGS:=$(shell $(SDL2_CONFIG) --cflags)
+$(info after SDL $(SDLLIBS)) 
 #vinman
 SDLLIBS:=-lSDL2
 
-$(info before glew ) 
 GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
 GLEWCFLAGS:=$(shell $(PKG_CONFIG) --cflags glew)
 $(info after glew $(GLEWLIBS))  
