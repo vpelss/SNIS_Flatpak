@@ -452,7 +452,7 @@ endif
 
 $(info before pa)
 SNDLIBS:=$(shell $(PKG_CONFIG) --libs portaudio-2.0 vorbisfile)
-$(shell echo "${SNDLIBS} after pa") 
+$(info after puseaudio $(SNNDLIBS)) 
 SNDFLAGS:=-DWITHAUDIOSUPPORT $(shell $(PKG_CONFIG) --cflags portaudio-2.0) -DDATADIR=\"${DATADIR}\"
 _OGGOBJ=ogg_to_pcm.o
 _SNDOBJS=wwviaudio.o
@@ -508,11 +508,10 @@ SDLCFLAGS:=$(shell $(SDL2_CONFIG) --cflags)
 #vinman
 SDLLIBS:=-lSDL2
 
-$(shell echo "before glew")
+$(info before glew ) 
 GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
 GLEWCFLAGS:=$(shell $(PKG_CONFIG) --cflags glew)
-$(shell echo "${SNDLIBS} after pa")
-$(shell echo "${GLEWLIBS} glew here?") 
+$(info after glew $(GLEWLIBS))  
 #vinman
 #GLEWLIBS:=-lGLEW -lGL -lX11 -lGLU
 
