@@ -511,12 +511,11 @@ $(info after SDL $(SDLLIBS))
 #SDLLIBS:=-lSDL2
 
 GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
-$(info after glew $(GLEWLIBS))  
-GLEWLIBS:=$(shell $(PKG_CONFIG) --libs glew)
-$(info after glew $(GLEWLIBS))  
 GLEWCFLAGS:=$(shell $(PKG_CONFIG) --cflags glew)
-$(info after glew $(GLEWLIBS))  
 #vinman
+$(info after glew $(GLEWLIBS))
+GLEWLIBS:=$(shell $(PKG_CONFIG) --libs GLEW)
+$(info after glew $(GLEWLIBS))  
 GLEWLIBS:=-lGLEW -lGL -lX11 -lGLU
 
 ifeq ($(OSX), 0)
