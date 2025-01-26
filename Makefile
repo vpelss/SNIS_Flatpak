@@ -450,9 +450,9 @@ RDYNAMIC=
 $(echo ${USING_CLANG})
 endif
 
-echo 'before pa'
+$(shell echo "before pa")
 SNDLIBS:=$(shell $(PKG_CONFIG) --libs portaudio-2.0 vorbisfile)
-echo "${SNDLIBS} after pa"
+$(shell echo "${SNDLIBS} after pa") 
 SNDFLAGS:=-DWITHAUDIOSUPPORT $(shell $(PKG_CONFIG) --cflags portaudio-2.0) -DDATADIR=\"${DATADIR}\"
 _OGGOBJ=ogg_to_pcm.o
 _SNDOBJS=wwviaudio.o
@@ -508,10 +508,11 @@ SDLCFLAGS:=$(shell $(SDL2_CONFIG) --cflags)
 #vinman
 SDLLIBS:=-lSDL2
 
-echo "glew there?"
+$(shell echo "before glew")
 GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
 GLEWCFLAGS:=$(shell $(PKG_CONFIG) --cflags glew)
-echo "${GLEWLIBS} glew here?"
+$(shell echo "${SNDLIBS} after pa")
+$(shell echo "${GLEWLIBS} glew here?") 
 #vinman
 #GLEWLIBS:=-lGLEW -lGL -lX11 -lGLU
 
