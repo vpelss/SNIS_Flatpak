@@ -451,7 +451,6 @@ $(echo ${USING_CLANG})
 endif
 
 SNDLIBS:=$(shell $(PKG_CONFIG) --libs portaudio-2.0 vorbisfile)
-$(info after puseaudio $(SNNDLIBS)) 
 SNDFLAGS:=-DWITHAUDIOSUPPORT $(shell $(PKG_CONFIG) --cflags portaudio-2.0) -DDATADIR=\"${DATADIR}\"
 _OGGOBJ=ogg_to_pcm.o
 _SNDOBJS=wwviaudio.o
@@ -488,9 +487,9 @@ ifeq (${OSX},0)
 # this "... || echo" hack thing.
 #
 LUALIBS:=$(shell $(PKG_CONFIG) --libs lua5.2 --silence-errors || $(PKG_CONFIG) --libs lua52 --silence-errors || $(PKG_CONFIG) --libs lua --silence-errors || echo '-llua5.2')
-$(info after lua $(LUALIBS)) 
-#LUACFLAGS:=$(shell $(PKG_CONFIG) --cflags lua5.2 --silence-errors || $(PKG_CONFIG) --cflags lua52 --silence-errors || $(PKG_CONFIG) --cflags lua --silence-errors || echo '')
+LUACFLAGS:=$(shell $(PKG_CONFIG) --cflags lua5.2 --silence-errors || $(PKG_CONFIG) --cflags lua52 --silence-errors || $(PKG_CONFIG) --cflags lua --silence-errors || echo '')
 #vinman
+$(info after lua $(LUALIBS)) 
 LUALIBS:=-llua
 else
 # OSX needs to do it this way (what is the point of pkgconfig if they all do it differently?)
@@ -500,14 +499,14 @@ endif
 
 PNGLIBS:=$(shell $(PKG_CONFIG) --libs libpng)
 PNGCFLAGS:=$(shell $(PKG_CONFIG) --cflags libpng)
-$(info after png $(PNGLIBS)) 
 #vinman
+$(info after png $(PNGLIBS)) 
 #PNGLIBS:=-lpng16 -lz
 
 SDLLIBS:=$(shell $(SDL2_CONFIG) --libs)
 SDLCFLAGS:=$(shell $(SDL2_CONFIG) --cflags)
-$(info after SDL $(SDLLIBS)) 
 #vinman
+$(info after SDL $(SDLLIBS)) 
 #SDLLIBS:=-lSDL2
 
 GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
