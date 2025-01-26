@@ -502,7 +502,7 @@ PNGLIBS:=$(shell $(PKG_CONFIG) --libs libpng)
 PNGCFLAGS:=$(shell $(PKG_CONFIG) --cflags libpng)
 $(info after png $(PNGLIBS)) 
 #vinman
-PNGLIBS:=-lpng16 -lz
+#PNGLIBS:=-lpng16 -lz
 
 SDLLIBS:=$(shell $(SDL2_CONFIG) --libs)
 SDLCFLAGS:=$(shell $(SDL2_CONFIG) --cflags)
