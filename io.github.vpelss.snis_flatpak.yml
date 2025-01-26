@@ -75,6 +75,7 @@ modules:
       - export VP="/lib64/pkgconfig"
       - echo ${VP}
       - mkdir -p ${FLATPAK_DEST}/lib64/pkgconfig/
+      - echo "dummy data" >  ${FLATPAK_DEST}/lib64/pkgconfig/dummy_file.txt
       - mkdir -p ${FLATPAK_DEST}/lib/pkgconfig/
       - ls -l ${FLATPAK_DEST}/lib/pkgconfig/
       - ls -l ${FLATPAK_DEST}/lib64/pkgconfig/
