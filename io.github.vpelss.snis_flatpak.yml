@@ -74,9 +74,9 @@ modules:
       - export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${FLATPAK_DEST}/lib64/pkgconfig
       - export VP="/lib64/pkgconfig"
       - echo ${VP}
-      - mkdir -p ${FLATPAK_DEST}/lib64/pkgconfig/
-      - echo "dummy data" >  ${FLATPAK_DEST}/lib64/pkgconfig/dummy_file.txt
-      - mkdir -p ${FLATPAK_DEST}/lib/pkgconfig/
+      - mkdir -p ${FLATPAK_DEST}/lib64/pkgconfig/ #make git actions happy
+      - echo "dummy data" >  ${FLATPAK_DEST}/lib64/pkgconfig/dummy_file.txt #make git actions happy
+      - mkdir -p ${FLATPAK_DEST}/lib/pkgconfig/  #make git actions happy
       - ls -l ${FLATPAK_DEST}/lib/pkgconfig/
       - ls -l ${FLATPAK_DEST}/lib64/pkgconfig/
       - cp -r ${FLATPAK_DEST}/lib64/pkgconfig/* ${FLATPAK_DEST}/lib/pkgconfig/
