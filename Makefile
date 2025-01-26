@@ -508,8 +508,9 @@ SDLLIBS:=-lSDL2
 
 GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
 GLEWCFLAGS:=$(shell $(PKG_CONFIG) --cflags glew)
+echo ${GLEWLIBS}
 #vinman
-GLEWLIBS:=-lGLEW -lGL -lX11 -lGLU
+#GLEWLIBS:=-lGLEW -lGL -lX11 -lGLU
 
 ifeq ($(OSX), 0)
 	CRYPTLIBS:=-lcrypt
