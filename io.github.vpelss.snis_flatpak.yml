@@ -1,8 +1,8 @@
 id: io.github.vpelss.snis_flatpak
 runtime: org.freedesktop.Platform
-runtime-version: "23.08"
+runtime-version: "24.08"
 sdk: org.freedesktop.Sdk
-command: wrappersnis
+command: snis.sh
 
 modules:
 
@@ -56,12 +56,12 @@ modules:
       - type: archive 
         url: https://www.lua.org/ftp/lua-5.2.0.tar.gz
         sha256: cabe379465aa8e388988073d59b69e76ba0025429d2c1da80821a252cdf6be0d
-
+ 
   - name: snis_flatpak
     buildsystem: simple
     build-commands:
       - mkdir -p /app/tmp
-      # these will be used in snis module
+      # this will be used in snis module
       - cp -r Makefile /app/tmp
     sources:
       - type: git
@@ -71,11 +71,16 @@ modules:
   - name: snis
     buildsystem: simple
     build-commands:
-      - PKG_CONFIG_PATH='${PKG_CONFIG_PATH}:${FLATPAK_DEST}/lib64/pkgconfig'
+      - export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${FLATPAK_DEST}/lib64/pkgconfig
+      - export VP="/lib64/pkgconfig"
+      - echo ${VP}
+      - mkdir -p ${FLATPAK_DEST}/lib/pkgconfig/
+      - cp -r ${FLATPAK_DEST}/lib64/pkgconfig/* ${FLATPAK_DEST}/lib/pkgconfig/
+      - ls -l ${FLATPAK_DEST}/lib/pkgconfig
       - mkdir -p /app/bin/bin
       - mkdir -p /app/bin/share
       - cp -r /app/tmp/Makefile ./
-      - make WITHVOICECHAT=no
+      - make WITHVOICECHAT=no LUALIBS=-llua66
       - cp -r bin/snis_launcher ${FLATPAK_DEST}/bin/
       - cp -r bin/* ${FLATPAK_DEST}/bin/bin/
       - cp -r share/* ${FLATPAK_DEST}/bin/share/
@@ -85,26 +90,25 @@ modules:
         url: https://github.com/smcameron/space-nerds-in-space.git
         commit: 388d3a3
 
-  - name: wrappersnis
+  - name: snis.sh
     buildsystem: simple
     build-commands:
-      - install -Dm755 wrapperbc.sh /app/bin/wrappersnis
+      - install -Dm755 snis.sh ${FLATPAK_DEST}/bin/snis.sh
+      - ls -l /app/bin/
+      - ls -l ${FLATPAK_DEST}/bin/
+
     sources:
       - type: script
-        dest-filename: wrapperbc.sh
+        dest-filename: snis.sh
         commands:
           - cd /app/bin
           - ./snis_launcher
 
 finish-args:
-  #- --allow=multiarch
   - --socket=fallback-x11
   - --share=ipc
   - --device=dri
   - --share=network
-  #- --persist=. :create
-  #- --filesystem=~/.local/share/space-nerds-in-space :create
-  #- --filesystem=~/.var/app
   - --socket=pulseaudio
 
 cleanup:
