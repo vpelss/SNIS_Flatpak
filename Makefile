@@ -487,11 +487,11 @@ ifeq (${OSX},0)
 # Arch pkg-config seems to be broken for lua5.2, so we have
 # this "... || echo" hack thing.
 #
-#vinman
 LUALIBS:=$(shell $(PKG_CONFIG) --libs lua5.2 --silence-errors || $(PKG_CONFIG) --libs lua52 --silence-errors || $(PKG_CONFIG) --libs lua --silence-errors || echo '-llua5.2')
 $(info after lua $(LUALIBS)) 
 #LUACFLAGS:=$(shell $(PKG_CONFIG) --cflags lua5.2 --silence-errors || $(PKG_CONFIG) --cflags lua52 --silence-errors || $(PKG_CONFIG) --cflags lua --silence-errors || echo '')
-#LUALIBS:=-llua
+#vinman
+LUALIBS:=-llua
 else
 # OSX needs to do it this way (what is the point of pkgconfig if they all do it differently?)
 LUALIBS:=$(shell $(PKG_CONFIG) --libs lua)
