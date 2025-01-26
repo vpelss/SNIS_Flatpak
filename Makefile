@@ -450,7 +450,7 @@ RDYNAMIC=
 $(echo ${USING_CLANG})
 endif
 
-$(info before pa)
+$(info before pulseaudio)
 SNDLIBS:=$(shell $(PKG_CONFIG) --libs portaudio-2.0 vorbisfile)
 $(info after puseaudio $(SNNDLIBS)) 
 SNDFLAGS:=-DWITHAUDIOSUPPORT $(shell $(PKG_CONFIG) --cflags portaudio-2.0) -DDATADIR=\"${DATADIR}\"
