@@ -508,7 +508,7 @@ SDLLIBS:=-lSDL2
 
 GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
 GLEWCFLAGS:=$(shell $(PKG_CONFIG) --cflags glew)
-echo ${GLEWLIBS}
+echo "${GLEWLIBS} glew here?"
 #vinman
 #GLEWLIBS:=-lGLEW -lGL -lX11 -lGLU
 
