@@ -71,6 +71,7 @@ modules:
   - name: snis
     buildsystem: simple
     build-commands:
+      - PKG_CONFIG_PATH='${PKG_CONFIG_PATH}:${FLATPAK_DEST}/lib64/pkgconfig'
       - mkdir -p /app/bin/bin
       - mkdir -p /app/bin/share
       - cp -r /app/tmp/Makefile ./
