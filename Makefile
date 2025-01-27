@@ -501,13 +501,13 @@ PNGLIBS:=$(shell $(PKG_CONFIG) --libs libpng)
 PNGCFLAGS:=$(shell $(PKG_CONFIG) --cflags libpng)
 #vinman
 #$(info after png $(PNGLIBS)) 
-#PNGLIBS:=-lpng16 -lz
+#PNGLIBS=-lpng16 -lz
 
 SDLLIBS:=$(shell $(SDL2_CONFIG) --libs)
 SDLCFLAGS:=$(shell $(SDL2_CONFIG) --cflags)
 #vinman
 #$(info after SDL $(SDLLIBS)) 
-#SDLLIBS:=-lSDL2
+#SDLLIBS=-lSDL2
 
 GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
 GLEWCFLAGS:=$(shell $(PKG_CONFIG) --cflags glew)
