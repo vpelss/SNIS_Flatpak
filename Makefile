@@ -489,8 +489,8 @@ ifeq (${OSX},0)
 LUALIBS:=$(shell $(PKG_CONFIG) --libs lua5.2 --silence-errors || $(PKG_CONFIG) --libs lua52 --silence-errors || $(PKG_CONFIG) --libs lua --silence-errors || echo '-llua5.2')
 LUACFLAGS:=$(shell $(PKG_CONFIG) --cflags lua5.2 --silence-errors || $(PKG_CONFIG) --cflags lua52 --silence-errors || $(PKG_CONFIG) --cflags lua --silence-errors || echo '')
 #vinman
-$(info after lua $(LUALIBS)) 
-LUALIBS:=-llua
+#$(info after lua $(LUALIBS)) 
+LUALIBS=-llua
 else
 # OSX needs to do it this way (what is the point of pkgconfig if they all do it differently?)
 LUALIBS:=$(shell $(PKG_CONFIG) --libs lua)
@@ -500,22 +500,22 @@ endif
 PNGLIBS:=$(shell $(PKG_CONFIG) --libs libpng)
 PNGCFLAGS:=$(shell $(PKG_CONFIG) --cflags libpng)
 #vinman
-$(info after png $(PNGLIBS)) 
+#$(info after png $(PNGLIBS)) 
 #PNGLIBS:=-lpng16 -lz
 
 SDLLIBS:=$(shell $(SDL2_CONFIG) --libs)
 SDLCFLAGS:=$(shell $(SDL2_CONFIG) --cflags)
 #vinman
-$(info after SDL $(SDLLIBS)) 
+#$(info after SDL $(SDLLIBS)) 
 #SDLLIBS:=-lSDL2
 
 GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
 GLEWCFLAGS:=$(shell $(PKG_CONFIG) --cflags glew)
 #vinman
-$(info after glew $(GLEWLIBS))
+#$(info after glew $(GLEWLIBS))
 #GLEWLIBS:=$(shell $(PKG_CONFIG) --libs GLEW)
-$(info after glew $(GLEWLIBS))  
-GLEWLIBS:=-lGLEW -lGL -lX11 -lGLU
+#$(info after glew $(GLEWLIBS))  
+GLEWLIBS=-lGLEW -lGL -lX11 -lGLU
 
 ifeq ($(OSX), 0)
 	CRYPTLIBS:=-lcrypt
