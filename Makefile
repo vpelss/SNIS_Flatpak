@@ -513,7 +513,7 @@ GLEWLIBS:=$(shell $(PKG_CONFIG) --libs-only-l glew)
 GLEWCFLAGS:=$(shell $(PKG_CONFIG) --cflags glew)
 #vinman
 $(info after glew $(GLEWLIBS))
-GLEWLIBS:=$(shell $(PKG_CONFIG) --libs GLEW)
+#GLEWLIBS:=$(shell $(PKG_CONFIG) --libs GLEW)
 $(info after glew $(GLEWLIBS))  
 GLEWLIBS:=-lGLEW -lGL -lX11 -lGLU
 
