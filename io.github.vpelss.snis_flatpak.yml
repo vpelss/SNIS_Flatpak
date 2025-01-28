@@ -1,7 +1,7 @@
 id: io.github.vpelss.snis_flatpak
 runtime: org.freedesktop.Platform
 # 24.08 will quietly break this : Can't find libglu.so.1 even though it is there
-runtime-version: "23.08"
+runtime-version: "24.08"
 sdk: org.freedesktop.Sdk
 command: snis.sh
 
