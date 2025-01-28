@@ -58,12 +58,12 @@ modules:
   - name: glew
     buildsystem: cmake
     config-opts: 
+      # adds glew.pc for /app/lib/pkg-config folder
+      - -D PKG_CONFIG_REPRESENTATIVE_TARGET=libglew_static
       #- -D glew-cmake_BUILD_SHARED=ON
       #- -D glew-cmake_BUILD_STATIC=ON
       #- -D USE_GLU=ON
       #- -D GLEW_OSMESA=ON
-      # adds glew.pc for /app/lib/pkg-config folder
-      - -D PKG_CONFIG_REPRESENTATIVE_TARGET=libglew_static
       #- -D ONLY_LIBS=ON
     build-commands: 
     sources:
@@ -71,12 +71,14 @@ modules:
         url: https://github.com/Perlmint/glew-cmake.git
         commit: master
 
-   - name: snis
+  - name: snis
     buildsystem: simple
     build-commands:
       # some built library modules are not correctly reporting to pkg-config
-      - make WITHVOICECHAT=no LUALIBS=-llua 
-#GLEWLIBS="-lGLEW -lGL -lX11 -lGLU"
+      - export MYCFLAGS=-static
+      - echo ${MYCFLAGS}
+      - make WITHVOICECHAT=no -e LUALIBS=-llua 
+      - echo ${MYCFLAGS}
       #copy compiled files to flatpak /app folder and set permissions
       - mkdir -p /app/bin/bin
       - mkdir -p /app/bin/share
@@ -102,7 +104,7 @@ modules:
         dest-filename: snis.sh
         commands:
           - cd /app/bin
-          - echo "snis.sh Ver 1"
+          - echo "snis.sh Ver 1.1"
           - ./snis_launcher
 
 finish-args:
