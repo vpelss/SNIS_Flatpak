@@ -31,7 +31,7 @@ https://github.com/vpelss/Space-Nerds-In-Space-Appimage
 
 See below for distributions that are having issues. You might need to install some libraries.
 
-ubuntu (sound does noy work on WSL for me)
+ubuntu (sound does not work on WSL for me)
 
 openSUSE (sound works on WSL)
 
