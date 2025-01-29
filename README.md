@@ -29,4 +29,22 @@ https://github.com/vpelss/Space-Nerds-In-Space-Appimage
 
 -----------------
 
-I have not been able to get it to work on Arch Linux (WSL). But I don't know much about it.
+See below for distributions that are having issues. You might need to install some libraries.
+
+ubuntu (sound does noy work on WSL for me)
+
+openSUSE (sound works on WSL)
+
+- sudo zypper install libfuse2
+- sudo zypper install xorg-x11
+- sudo zypper install Mesa
+- sudo zypper install libportaudio2
+
+
+Slakware
+
+Debian
+
+Arch
+
+Kali
