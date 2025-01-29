@@ -29,6 +29,4 @@ https://github.com/vpelss/Space-Nerds-In-Space-Appimage
 
 -----------------
 
-built using: https://github.com/marketplace/actions/flatpak-builder
-
-
+I have not been able to get it to work on Arch Linux (WSL). But I don't know much about it.
