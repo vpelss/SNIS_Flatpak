@@ -22,6 +22,8 @@ We also have an AppImage version: https://github.com/vpelss/Space-Nerds-In-Space
 
 -----------------
 
+# WSL Installation Results
+
 If SNIS is not working on your distribution, you might need to install some libraries.
 
 Ubuntu WSL (sound does not work on WSL for me)
