@@ -35,10 +35,9 @@ openSUSE (sound works on WSL)
 - sudo zypper install Mesa
 - sudo zypper install libportaudio2
 
+Debian 
 
-Debian
-
-- sudo apt install fuse libfuse2
+- sudo apt install fuse libfuse2 xorg portaudio19-dev
 
 Arch
 
