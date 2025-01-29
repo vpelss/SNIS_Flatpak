@@ -15,7 +15,7 @@ https://flatpak.org/setup/
 
 Usually:
 - sudo apt install flatpak
-- flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+- flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 Then install Space Nerds In Space:
 - flatpak install --user -v https://vpelss.github.io/snis_flatpak/io.github.vpelss.snis_flatpak.flatpakref
