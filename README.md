@@ -18,6 +18,8 @@ Then install Space Nerds In Space:
 Then run it: 
 - flatpak run io.github.vpelss.snis_flatpak
 
+# AppImage
+
 We also have an AppImage version: https://github.com/vpelss/Space-Nerds-In-Space-Appimage
 
 -----------------
