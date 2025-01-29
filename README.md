@@ -8,14 +8,9 @@ https://smcameron.github.io/space-nerds-in-space/
 
 Or:
 
-To install and run Space Nerds in Space with a Flatpak, open a linux terminal and type the following (once installed you just need the last line to run):
+# Install woth flatpak
 
-Install flatpak for your lixux distro, if required as per: 
-https://flatpak.org/setup/
-
-Usually:
-- sudo apt install flatpak
-- flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+If your distro does not alreadt have flatpak installed, install flatpak for your linux distro as per: https://flatpak.org/setup/
 
 Then install Space Nerds In Space:
 - flatpak install --user -v https://vpelss.github.io/snis_flatpak/io.github.vpelss.snis_flatpak.flatpakref
@@ -23,15 +18,15 @@ Then install Space Nerds In Space:
 Then run it:
 - flatpak run io.github.vpelss.snis_flatpak
 
-We also have an AppImage version:
-
-https://github.com/vpelss/Space-Nerds-In-Space-Appimage
+We also have an AppImage version: https://github.com/vpelss/Space-Nerds-In-Space-Appimage
 
 -----------------
 
-See below for distributions that are having issues. You might need to install some libraries.
+If SNIS is not working on your distribution, you might need to install some libraries.
 
 ubuntu (sound does not work on WSL for me)
+
+- sudo apt install libfuse2 xorg Mesa libportaudio2
 
 openSUSE (sound works on WSL)
 
