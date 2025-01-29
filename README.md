@@ -8,15 +8,13 @@ https://smcameron.github.io/space-nerds-in-space/
 
 Or:
 
-# Install woth flatpak
+# Install with flatpak
 
-If your distro does not alreadt have flatpak installed, install flatpak for your linux distro as per: https://flatpak.org/setup/
+If your distro does not already have flatpak installed, install flatpak for your linux distro as per: https://flatpak.org/setup/
 
-Then install Space Nerds In Space:
-- flatpak install --user -v https://vpelss.github.io/snis_flatpak/io.github.vpelss.snis_flatpak.flatpakref
+Then install Space Nerds In Space: - flatpak install --user -v https://vpelss.github.io/snis_flatpak/io.github.vpelss.snis_flatpak.flatpakref
 
-Then run it:
-- flatpak run io.github.vpelss.snis_flatpak
+Then run it: - flatpak run io.github.vpelss.snis_flatpak
 
 We also have an AppImage version: https://github.com/vpelss/Space-Nerds-In-Space-Appimage
 
