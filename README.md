@@ -36,9 +36,9 @@ openSUSE (sound works on WSL)
 - sudo zypper install libportaudio2
 
 
-Slakware
-
 Debian
+
+- sudo apt install fuse libfuse2
 
 Arch
 
