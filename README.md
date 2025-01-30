@@ -50,6 +50,7 @@ Arch WSL
 - to test
 - sudo pacman -Syu
 - sudo pacman -S fuse2
+- sudo pacman -S portaudio
 -  
 
 
