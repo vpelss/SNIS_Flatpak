@@ -51,6 +51,10 @@ Arch WSL (Why?)
 - sudo pacman -Syu
 - sudo pacman -S fuse2
 - sudo pacman -S portaudio
+
+  Slackware 
+
+  - slackpkg install xorg-server
 -  
 
 
