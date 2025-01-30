@@ -57,9 +57,10 @@ Arch WSL (Why?)
 
   Slackware
   
-   - slackpkg update
-   - sudo slackpkg install xorg-server
+  - slackpkg update
+  - sudo slackpkg install xorg-server
   - sudo slackpkg install libX11
+  - sudo slackpkg install mesa
 
 
 
