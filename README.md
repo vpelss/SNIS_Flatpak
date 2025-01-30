@@ -44,7 +44,7 @@ Debian WSL (sound works on WSL)
 
 - sudo apt install fuse libfuse2 xorg portaudio19-dev
 
-Arch WSL
+Arch WSL (Why?)
 
 
 - to test
