@@ -46,8 +46,7 @@ Debian WSL (sound works on WSL)
 
 Arch WSL (Why?)
 
-
-- to test
+- working on
 - sudo pacman -Syu
 - sudo pacman -S fuse2
 - sudo pacman -S portaudio
@@ -56,13 +55,15 @@ Arch WSL (Why?)
 - sudo pacman -S sdl2
 
   Slackware
-  
+
+  - working on
   - slackpkg update
   - sudo slackpkg install xorg-server
   - sudo slackpkg install libX11
   - sudo slackpkg install mesa
   - sudo slackpkg install libglvnd
   - sudo slackpkg install libxcb
+  - sudo slackpkg install wayland
 
 
 
