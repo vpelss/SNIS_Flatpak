@@ -62,6 +62,7 @@ Arch WSL (Why?)
   - sudo slackpkg install libX11
   - sudo slackpkg install mesa
   - sudo slackpkg install libglvnd
+  - sudo slackpkg install libxcb
 
 
 
