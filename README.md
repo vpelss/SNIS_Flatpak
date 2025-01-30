@@ -64,6 +64,7 @@ Arch WSL (Why?)
   - sudo slackpkg install libglvnd
   - sudo slackpkg install libxcb
   - sudo slackpkg install wayland
+  - sudo slackpkg install pulseaudio
 
 
 
