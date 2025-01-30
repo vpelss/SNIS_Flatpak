@@ -30,6 +30,7 @@ If SNIS is not working on your distribution, you might need to install some libr
 
 Ubuntu WSL (sound does not work on WSL for me)
 
+- sudo apt update
 - sudo apt install xorg mesa-utils libportaudio2 libfuse2 
 
 openSUSE WSL (sound works on WSL)
@@ -47,7 +48,8 @@ Arch WSL
 
 
 - to test
--  pacman -S fuse2
+- sudo pacman -Syu
+- sudo pacman -S fuse2
 -  
 
 
