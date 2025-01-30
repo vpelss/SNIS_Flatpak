@@ -58,7 +58,8 @@ Arch WSL (Why?)
   Slackware
   
    - slackpkg update
-   - slackpkg install xorg-server
+   - sudo slackpkg install xorg-server
+  - sudo slackpkg install x11
 
 
 
