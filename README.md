@@ -55,9 +55,10 @@ Arch WSL (Why?)
 - sudo pacman -S xfce4 xfce4-goodies
 - sudo pacman -S sdl2
 
-  Slackware 
+  Slackware
+  
+   - slackpkg update
+   - slackpkg install xorg-server
 
-  - slackpkg install xorg-server
--  
 
 
