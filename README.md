@@ -52,7 +52,8 @@ Arch WSL (Why?)
 - sudo pacman -S portaudio
 - sudo pacman -S xorg
 - sudo pacman -S xfce4 xfce4-goodies
-- sudo pacman -S sdl2
+- sudo pacman -S sdl2 ????????
+- sudo pacman -S sdl12-compat
 
   Slackware (not going to happen. Too difficult to set up jack)
 
