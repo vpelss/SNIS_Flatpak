@@ -54,9 +54,8 @@ Arch WSL (Why?)
 - sudo pacman -S xfce4 xfce4-goodies
 - sudo pacman -S sdl2
 
-  Slackware
+  Slackware (not going to happen. Too difficult to set up jack)
 
-  - working on
   - slackpkg update
   - sudo slackpkg install xorg-server
   - sudo slackpkg install libX11
@@ -65,6 +64,5 @@ Arch WSL (Why?)
   - sudo slackpkg install libxcb
   - sudo slackpkg install wayland
   - sudo slackpkg install pulseaudio
-
-
+  - giving up :) Stop using Slackware
 
