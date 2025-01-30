@@ -51,6 +51,8 @@ Arch WSL (Why?)
 - sudo pacman -Syu
 - sudo pacman -S fuse2
 - sudo pacman -S portaudio
+- sudo pacman -S xorg
+- sudo pacman -S xfce4 xfce4-goodies
 
   Slackware 
 
