@@ -2,7 +2,7 @@
 
 Space Nerds in Space is a linux only space bridge simulator.
 
-You can build it yourself here:
+You can build it yourself on your distro here:
 
 https://smcameron.github.io/space-nerds-in-space/
 
