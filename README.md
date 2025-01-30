@@ -53,6 +53,7 @@ Arch WSL (Why?)
 - sudo pacman -S portaudio
 - sudo pacman -S xorg
 - sudo pacman -S xfce4 xfce4-goodies
+- sudo pacman -S sdl3
 
   Slackware 
 
