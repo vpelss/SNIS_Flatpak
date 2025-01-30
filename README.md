@@ -59,7 +59,7 @@ Arch WSL (Why?)
   
    - slackpkg update
    - sudo slackpkg install xorg-server
-  - sudo slackpkg install x11
+  - sudo slackpkg install libX11
 
 
 
