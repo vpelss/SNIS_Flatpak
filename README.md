@@ -28,19 +28,19 @@ We also have an AppImage version: https://github.com/vpelss/Space-Nerds-In-Space
 
 If SNIS is not working on your distribution, you might need to install some libraries. Note: fuse is required for AppImage only.
 
-Ubuntu WSL (sound does not work on WSL for me)
+Ubuntu WSL
 
 - sudo apt update
-- sudo apt install xorg mesa-utils libportaudio2 libfuse2 
+- sudo apt install portaudio xorg mesa-utils libportaudio2 libfuse2 
 
-openSUSE WSL (sound works on WSL)
+openSUSE WSL
 
 - sudo zypper install libfuse2
 - sudo zypper install xorg-x11
 - sudo zypper install Mesa
 - sudo zypper install libportaudio2
 
-Debian WSL (sound works on WSL)
+Debian WSL
 
 - sudo apt install fuse libfuse2 xorg portaudio19-dev
 
