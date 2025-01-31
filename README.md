@@ -44,16 +44,14 @@ Debian WSL (sound works on WSL)
 
 - sudo apt install fuse libfuse2 xorg portaudio19-dev
 
-Arch WSL (Why?)
+Arch WSL 
 
-- working on
+- working on. stuck at: 
 - sudo pacman -Syu
 - sudo pacman -S fuse2
 - sudo pacman -S portaudio
 - sudo pacman -S xorg
 - sudo pacman -S xfce4 xfce4-goodies
-- sudo pacman -S sdl2-compat ????????
-- sudo pacman -S sdl3 ????????
 - sudo pacman -S sdl12-compat
 
   Slackware (not going to happen. Too difficult to set up jack)
