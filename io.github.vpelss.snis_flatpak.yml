@@ -75,17 +75,17 @@ modules:
     buildsystem: simple
     build-commands:
       # some built library modules are not correctly reporting to pkg-config
-      - export MYCFLAGS=-static
-      - echo ${MYCFLAGS}
       - make WITHVOICECHAT=no -e LUALIBS=-llua 
-      - echo ${MYCFLAGS}
+      - rm -r object_files
       #copy compiled files to flatpak /app folder and set permissions
       - mkdir -p /app/bin/bin
       - mkdir -p /app/bin/share
-      - cp -r bin/snis_launcher ${FLATPAK_DEST}/bin/
-      - cp -r bin/* ${FLATPAK_DEST}/bin/bin/
-      - cp -r share/* ${FLATPAK_DEST}/bin/share/
-      - chmod +x ${FLATPAK_DEST}/bin/bin/*
+      #copy it all, as there are tools everywhere
+      - cp -r * ${FLATPAK_DEST}/bin/
+      #- cp -r bin/snis_launcher ${FLATPAK_DEST}/bin/
+      #- cp -r bin/* ${FLATPAK_DEST}/bin/bin/
+      #- cp -r share/* ${FLATPAK_DEST}/bin/share/
+      #- chmod +x ${FLATPAK_DEST}/bin/bin/*
     sources:
       - type: git
         url: https://github.com/smcameron/space-nerds-in-space.git
