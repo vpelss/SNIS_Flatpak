@@ -46,7 +46,7 @@ Debian WSL (sound works on WSL)
 
 Arch WSL 
 
-- working on. stuck at: 
+- working on. stuck at: Unable to initialize SDL (Video):  No available video device
 - sudo pacman -Syu
 - sudo pacman -S fuse2
 - sudo pacman -S portaudio
@@ -54,7 +54,7 @@ Arch WSL
 - sudo pacman -S xfce4 xfce4-goodies
 - sudo pacman -S sdl12-compat
 
-  Slackware (not going to happen. Too difficult to set up jack)
+  Slackware (this is not going to happen. Too difficult to set up jack on slackware)
 
   - slackpkg update
   - sudo slackpkg install xorg-server
