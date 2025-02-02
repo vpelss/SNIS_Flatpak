@@ -17,6 +17,7 @@ jobs:
         bundle: io.github.vpelss.snis_flatpak
         manifest-path: io.github.vpelss.snis_flatpak.yml
         cache-key: flatpak-builder-${{ github.sha }}
+        upload-artifact: "false"
 
     - name: See
       run: |   
