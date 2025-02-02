@@ -14,12 +14,14 @@ If your distro does not already have flatpak installed, install flatpak for your
 
 Then install Space Nerds In Space: 
 
-```flatpak install --user -v https://vpelss.github.io/snis_flatpak/io.github.vpelss.snis_flatpak.flatpakref
+```
+flatpak install --user -v https://vpelss.github.io/snis_flatpak/io.github.vpelss.snis_flatpak.flatpakref
 ```
 
 Then run it: 
 
-```flatpak run io.github.vpelss.snis_flatpak
+```
+flatpak run io.github.vpelss.snis_flatpak
 ```
 
 # AppImage
