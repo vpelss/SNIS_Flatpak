@@ -14,11 +14,13 @@ If your distro does not already have flatpak installed, install flatpak for your
 
 Then install Space Nerds In Space: 
 
-`flatpak install --user -v https://vpelss.github.io/snis_flatpak/io.github.vpelss.snis_flatpak.flatpakref`
+```flatpak install --user -v https://vpelss.github.io/snis_flatpak/io.github.vpelss.snis_flatpak.flatpakref
+```
 
 Then run it: 
 
-`flatpak run io.github.vpelss.snis_flatpak`
+```flatpak run io.github.vpelss.snis_flatpak
+```
 
 # AppImage
 
@@ -33,15 +35,18 @@ If SNIS is not working on your distribution, you might need to install some libr
 Ubuntu WSL
 
 ```sudo apt update
-sudo apt install portaudio xorg mesa-utils libportaudio2 libfuse2```
+sudo apt install portaudio xorg mesa-utils libportaudio2 libfuse2
+```
 
 openSUSE WSL
 
-```sudo zypper install libfuse2 xorg-x11 Mesa libportaudio2```
+```sudo zypper install libfuse2 xorg-x11 Mesa libportaudio2
+```
 
 Debian WSL
 
-```sudo apt install fuse libfuse2 xorg portaudio19-dev```
+```sudo apt install fuse libfuse2 xorg portaudio19-dev
+```
 
 Arch WSL 
 
