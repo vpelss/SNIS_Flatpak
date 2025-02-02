@@ -32,9 +32,8 @@ If SNIS is not working on your distribution, you might need to install some libr
 
 Ubuntu WSL
 
-`sudo apt update`
- 
-`sudo apt install portaudio xorg mesa-utils libportaudio2 libfuse2` 
+```sudo apt update
+sudo apt install portaudio xorg mesa-utils libportaudio2 libfuse2```
 
 openSUSE WSL
 
