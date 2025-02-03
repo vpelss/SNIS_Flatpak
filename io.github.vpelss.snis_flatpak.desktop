@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Space Nerds In Space
+GenericName=SNIS
+Comment=Spaceship bridge simulator game
+Exec=snis
+Icon=io.github.vpelss.snis_flatpak
+Terminal=false
+Type=Application
+Categories=Game;Simulation;
