@@ -11,14 +11,22 @@
   </releases>
   <description>
     <p>
-      EmptyEpsilon places you in the roles of a spaceship&apos;s bridge officers, like those seen in Star Trek. While you can play EmptyEpsilon alone or with friends, the best experience involves 6 players working together on each ship.
+      Space Nerds In Space is an open source (GPLv2) cooperative multiplayer starship simulator for linux (may also work on Mac). So go out and get together with a crew of your linux-nerd friends and their computers in a room with a projector or TV, and go forth and explore the galaxy.
+    </p>
+    <p>  
+    Space Nerds In Space allows you to places you take control of the various bridge controls of a starship. You can play  Space Nerds In Space alone or with friends, but you really need a crew of 2 or more players to master a starship.
+      </p>
+    <p>
+      Various station are Captain (Main Screen), Helms, Weapons, Communications, Science/Scanning, and Engineering/Repair. 
     </p>
     <p>
-      Each officer fills a unique role: Captain, Helms, Weapons, Relay, Science, and Engineering. Except for the Captain, each officer operates part of the ship through a specialized screen. The Captain relies on their trusty crew to report information and follow orders.
+      Note that unlike other fine bridge simulators, Space Nerds In Space is fully 3D.
     </p>
+    <p>Space Nerds In Space also has an option where someone can take the role of dungeon master and modify the game universe in progress.</p>
+    <p>There are warp gates, nebula that block sensors and allow you to hide, mining, courier missions, and of course many hostiles. And much more.</p>
   </description>
   
-  <launchable type="desktop-id">EmptyEpsilon.desktop</launchable>
+  <launchable type="desktop-id">SNiS.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <image>https://daid.github.io/EmptyEpsilon/screenshots/mainscreen.png</image>
