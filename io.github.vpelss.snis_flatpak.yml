@@ -100,7 +100,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/vpelss/snis_flatpak.git
-        commit: master
+        commit: main
 
   #we need this as program needs to be run with us in correct pwd folder : /app/bin
   - name: snis.sh
