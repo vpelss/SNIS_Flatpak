@@ -1,0 +1,33 @@
+<component type="desktop-application">
+  <id>io.github.daid.EmptyEpsilon</id>
+  
+  <name>EmptyEpsilon</name>
+  <summary>Open source spaceship bridge simulator</summary>
+  
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0-only</project_license>
+  <releases>
+  <release version="EE-2023-06-17" date="2023-06-17" type="stable"/>
+  </releases>
+  <description>
+    <p>
+      EmptyEpsilon places you in the roles of a spaceship&apos;s bridge officers, like those seen in Star Trek. While you can play EmptyEpsilon alone or with friends, the best experience involves 6 players working together on each ship.
+    </p>
+    <p>
+      Each officer fills a unique role: Captain, Helms, Weapons, Relay, Science, and Engineering. Except for the Captain, each officer operates part of the ship through a specialized screen. The Captain relies on their trusty crew to report information and follow orders.
+    </p>
+  </description>
+  
+  <launchable type="desktop-id">EmptyEpsilon.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://daid.github.io/EmptyEpsilon/screenshots/mainscreen.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://daid.github.io/EmptyEpsilon/screenshots/helms.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://daid.github.io/EmptyEpsilon/screenshots/engineering.png</image>
+    </screenshot>
+  </screenshots>
+</component>
