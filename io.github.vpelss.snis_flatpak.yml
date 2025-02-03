@@ -99,6 +99,9 @@ modules:
       - pkg-config --libs-only-l glew 
       - pkg-config --libs glu 
       - install -Dm755 snis.sh ${FLATPAK_DEST}/bin/snis.sh
+    post-install:
+       - install -Dm0644 logo.png "${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png"
+       - install -Dm0644 appdata.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml
     sources:
       - type: script
         dest-filename: snis.sh
