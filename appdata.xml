@@ -1,13 +1,13 @@
 <component type="desktop-application">
-  <id>io.github.daid.EmptyEpsilon</id>
+  <id>io.github.vpelss.snis_flatpak</id>
   
-  <name>EmptyEpsilon</name>
-  <summary>Open source spaceship bridge simulator</summary>
+  <name>Space Nerds in Space</name>
+  <summary>Open source spaceship bridge simulator. Build bu Space Nerds, for Space Nerds.</summary>
   
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-only</project_license>
   <releases>
-  <release version="EE-2023-06-17" date="2023-06-17" type="stable"/>
+  <release version="SNIS-2025-02-01" date="2025-02-01" type="stable"/>
   </releases>
   <description>
     <p>
