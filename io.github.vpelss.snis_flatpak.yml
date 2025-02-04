@@ -56,7 +56,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/PortAudio/portaudio.git
-        commit: 242a024
+        commit: 242a0241f69bd359b692004f3974ce39ec5137fd #Aug 11, 2021
 
   - name: glu
     buildsystem: meson
