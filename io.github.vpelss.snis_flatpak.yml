@@ -94,7 +94,7 @@ modules:
         commit: main
 
   #we need this as snis_launcher needs to be run in root folder with all executables in a bin subfolder. thus /app/bin/bin
-  - name: snis.sh
+  - name: snis
     buildsystem: simple
     build-commands:
       - install -Dm755 snis ${FLATPAK_DEST}/snis
