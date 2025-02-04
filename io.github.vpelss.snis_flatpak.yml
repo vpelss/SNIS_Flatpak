@@ -1,6 +1,5 @@
 id: io.github.vpelss.snis_flatpak
 runtime: org.freedesktop.Platform
-# 24.08 will quietly break this : Can't find libglu.so.1 even though it is there
 runtime-version: "24.08"
 sdk: org.freedesktop.Sdk
 command: snis.sh
@@ -10,6 +9,18 @@ build-options:
   #for some reason /app/lib64/pkgconfig/ is not in search path
   append-pkg-config-path: "/app/lib64/pkgconfig/"
 
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
+  - --device=dri
+  - --share=network
+  - --socket=pulseaudio
+
+cleanup:
+  - /bin/bin/snis_launcher
+  - /tmp
+  
 modules:
 
   - name: opus
@@ -109,14 +120,3 @@ modules:
           - echo "snis.sh Ver 1.1"
           - ./snis_launcher
 
-finish-args:
-  - --socket=wayland
-  - --socket=fallback-x11
-  - --share=ipc
-  - --device=dri
-  - --share=network
-  - --socket=pulseaudio
-
-cleanup:
-  - /bin/bin/snis_launcher
-  - /tmp
