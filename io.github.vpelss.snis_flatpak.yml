@@ -96,7 +96,7 @@ modules:
   - name: snis_meta
     buildsystem: simple
     build-commands:
-      - install -Dm0644 logo.svg "${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.svg"
+      - install -Dm0644 logo.svg "${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg"
       - install -Dm0644 ${FLATPAK_ID}.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
       - install -Dm0644 ${FLATPAK_ID}.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
     sources:
