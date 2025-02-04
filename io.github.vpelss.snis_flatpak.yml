@@ -17,10 +17,7 @@ finish-args:
   - --share=network
   - --socket=pulseaudio
 
-cleanup:
-  - /bin/bin/snis_launcher
-  - /tmp
-  
+
 modules:
 
   - name: opus
@@ -104,7 +101,7 @@ modules:
         url: https://github.com/vpelss/snis_flatpak.git
         commit: main
 
-  #we need this as program needs to be run with us in correct pwd folder : /app/bin
+  #we need this as snis_launcher needs to be run in root folder with all executables in a bin subfolder. thus /app/bin/bin
   - name: snis.sh
     buildsystem: simple
     build-commands:
@@ -116,3 +113,7 @@ modules:
           - cd /app/bin
           - exec ./snis_launcher
 
+cleanup:
+  - /bin/bin/snis_launcher
+  - /tmp
+  
