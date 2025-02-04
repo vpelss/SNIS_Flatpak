@@ -17,6 +17,9 @@ finish-args:
   - --share=network
   - --socket=pulseaudio
 
+cleanup:
+  - /bin/bin/snis_launcher
+  - /tmp
 
 modules:
 
@@ -111,9 +114,7 @@ modules:
         dest-filename: snis.sh
         commands:
           - cd /app/bin
-          - exec ./snis_launcher
+          - ./snis_launcher
 
-cleanup:
-  - /bin/bin/snis_launcher
-  - /tmp
+
   
