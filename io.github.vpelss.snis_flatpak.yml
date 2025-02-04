@@ -109,6 +109,7 @@ modules:
     buildsystem: simple
     build-commands:
       - install -Dm755 snis.sh ${FLATPAK_DEST}/snis.sh
+      - chmod +x ${FLATPAK_DEST}/snis.sh
       - ls -l ${FLATPAK_DEST}
     sources:
       - type: script
