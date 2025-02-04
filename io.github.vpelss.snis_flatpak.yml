@@ -9,17 +9,6 @@ build-options:
   #for some reason /app/lib64/pkgconfig/ is not in search path
   #append-pkg-config-path: "/app/lib64/pkgconfig/"
 
-finish-args:
-  - --socket=wayland
-  - --socket=fallback-x11
-  - --share=ipc
-  - --device=dri
-  - --share=network
-  - --socket=pulseaudio
-
-cleanup:
-  #- /bin/bin/snis_launcher
-  - /tmp
 
 modules:
 
@@ -120,5 +109,16 @@ modules:
           - cd /app/bin
           - ./snis_launcher
 
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
+  - --device=dri
+  - --share=network
+  - --socket=pulseaudio
+
+cleanup:
+  #- /bin/bin/snis_launcher
+  - /tmp
 
   
