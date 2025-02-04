@@ -93,15 +93,12 @@ modules:
       - mkdir -p ${FLATPAK_DEST}/share/metainfo
       - mkdir -p ${FLATPAK_DEST}/share/applications
       - ls -l
-      - install -Dm0644 logo.png "${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png"
+      - install -Dm0644 logo.svg "${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.svg"
       - install -Dm0644 ${FLATPAK_ID}.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
       - install -Dm0644 ${FLATPAK_ID}.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
       - ls -l ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/
       - ls -l ${FLATPAK_DEST}/share/metainfo/
       - ls -l ${FLATPAK_DEST}/share/applications/
-    post-install:
-      #- install -Dm0644 logo.png "${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png"
-      #- install -Dm0644 appdata.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
     sources:
       - type: git
         url: https://github.com/vpelss/snis_flatpak.git
