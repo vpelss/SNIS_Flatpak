@@ -18,7 +18,7 @@ finish-args:
   - --socket=pulseaudio
 
 cleanup:
-  - /bin/bin/snis_launcher
+  #- /bin/bin/snis_launcher
   - /tmp
 
 modules:
