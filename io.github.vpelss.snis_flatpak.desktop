@@ -2,7 +2,7 @@
 Name=Space_Nerds_In_Space
 GenericName=Space_Nerds_In_Space
 Comment=Spaceship bridge simulator game
-Exec=snis.sh
+Exec=snis
 Icon=io.github.vpelss.snis_flatpak
 Terminal=false
 Type=Application
