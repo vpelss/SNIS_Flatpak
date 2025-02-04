@@ -96,9 +96,6 @@ modules:
   - name: snis_meta
     buildsystem: simple
     build-commands:
-      - mkdir -p ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps
-      - mkdir -p ${FLATPAK_DEST}/share/metainfo
-      - mkdir -p ${FLATPAK_DEST}/share/applications
       - install -Dm0644 logo.svg "${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.svg"
       - install -Dm0644 ${FLATPAK_ID}.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
       - install -Dm0644 ${FLATPAK_ID}.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
@@ -117,6 +114,5 @@ modules:
         dest-filename: snis.sh
         commands:
           - cd /app/bin
-          - echo "snis.sh Ver 1.1"
-          - ./snis_launcher
+          - exec ./snis_launcher
 
