@@ -2,7 +2,7 @@ id: io.github.vpelss.snis_flatpak
 runtime: org.freedesktop.Platform
 runtime-version: "24.08"
 sdk: org.freedesktop.Sdk
-command: snis.sh
+command: snis
 
 build-options:
   #append-ld-library-path: "/app/lib64/"
@@ -108,14 +108,14 @@ modules:
   - name: snis.sh
     buildsystem: simple
     build-commands:
-      - install -Dm755 snis.sh ${FLATPAK_DEST}/snis.sh
-      - install -Dm755 snis.sh ${FLATPAK_DEST}/bin/snis.sh
-      - chmod +x ${FLATPAK_DEST}/snis.sh
+      - install -Dm755 snis ${FLATPAK_DEST}/snis
+      - install -Dm755 snis ${FLATPAK_DEST}/bin/snis
+      #- chmod +x ${FLATPAK_DEST}/snis
       - ls -l ${FLATPAK_DEST}
       - ls -l ${FLATPAK_DEST}/bin
     sources:
       - type: script
-        dest-filename: snis.sh
+        dest-filename: snis
         commands:
           - cd /app/bin
           - ./snis_launcher
