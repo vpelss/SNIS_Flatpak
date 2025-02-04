@@ -121,6 +121,7 @@ modules:
           - ./snis_launcher
 
 finish-args:
+  - --socket=wayland
   - --socket=fallback-x11
   - --share=ipc
   - --device=dri
