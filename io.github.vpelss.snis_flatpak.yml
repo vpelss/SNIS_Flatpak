@@ -92,7 +92,7 @@ modules:
       - mkdir -p ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps
       - mkdir -p ${FLATPAK_DEST}/share/metainfo
       - ls -l
-      - install -Dm0644 logo.png "${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/SNIS.png"
+      - install -Dm0644 logo.png "${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png"
       - install -Dm0644 appdata.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
       - ls -l ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/
     post-install:
