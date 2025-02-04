@@ -5,9 +5,9 @@ sdk: org.freedesktop.Sdk
 command: snis.sh
 
 build-options:
-  append-ld-library-path: "/app/lib64/"
+  #append-ld-library-path: "/app/lib64/"
   #for some reason /app/lib64/pkgconfig/ is not in search path
-  append-pkg-config-path: "/app/lib64/pkgconfig/"
+  #append-pkg-config-path: "/app/lib64/pkgconfig/"
 
 finish-args:
   - --socket=wayland
