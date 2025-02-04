@@ -9,7 +9,6 @@ build-options:
   #for some reason /app/lib64/pkgconfig/ is not in search path
   #append-pkg-config-path: "/app/lib64/pkgconfig/"
 
-
 modules:
 
   - name: opus
@@ -97,7 +96,7 @@ modules:
   - name: snis
     buildsystem: simple
     build-commands:
-      - install -Dm755 snis ${FLATPAK_DEST}/snis
+      #- install -Dm755 snis ${FLATPAK_DEST}/snis
       - install -Dm755 snis ${FLATPAK_DEST}/bin/snis
       #- chmod +x ${FLATPAK_DEST}/snis
       - ls -l ${FLATPAK_DEST}
