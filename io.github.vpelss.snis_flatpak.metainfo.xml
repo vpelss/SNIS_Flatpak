@@ -1,5 +1,5 @@
 <component type="desktop-application">
-  <id>io.github.vpelss.snis_flatpak</id>
+  <id>io.github.smcameron.space-nerds-in-space</id>
   
   <name>Space Nerds in Space</name>
   <summary>Open source spaceship bridge simulator. Build by Space Nerds, for Space Nerds.</summary>
