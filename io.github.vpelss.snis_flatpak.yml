@@ -2,12 +2,12 @@ id: io.github.vpelss.snis_flatpak
 runtime: org.freedesktop.Platform 
 runtime-version: "24.08"
 sdk: org.freedesktop.Sdk 
-command: snis.sh
+command: /app/bin/bin/snis_launcher #snis_launcher shell script needs to be run in folder with sub folders 'bin' and 'share'. I do not want to combine /app/bin/share folder and /app/share folder for aesthetic reasons
 
 build-options:
-  append-ld-library-path: "/app/lib64/"
+  #append-ld-library-path: "/app/lib64/"
   #for some reason /app/lib64/pkgconfig/ is not in search path
-  append-pkg-config-path: "/app/lib64/pkgconfig/"
+  #append-pkg-config-path: "/app/lib64/pkgconfig/"
 
 config-opts:
   - --enable-libopus # ? https://github.com/flatpak/freedesktop-sdk-images/blob/1.6/org.freedesktop.Sdk.json.in
@@ -29,7 +29,7 @@ finish-args:
   - --socket=pulseaudio
 
 cleanup:
-  - /bin/bin/snis_launcher
+  #- /bin/bin/snis_launcher
   
 modules:
 
@@ -87,26 +87,34 @@ modules:
     sources:
       - type: git 
         url: https://github.com/Perlmint/glew-cmake.git
-        commit: master
+        commit: 72ff6b1a5ecfc1ae6154637298882744487634b4
 
-  - name: snis_launcherrr
+  - name: snis
     buildsystem: simple
     build-commands:
-      # some built library modules are not correctly reporting to pkg-config
-      #- make WITHVOICECHAT=no -e LUALIBS=-llua 
-      - make install -e WITHVOICECHAT=no LUALIBS=-llua 
-      - rm -r object_files
+      # some built library modules are not correctly reporting to pkg-config so LUALIBS=-llua       
+      #- echo $HOME
+      - make  PREFIX=${FLATPAK_DEST}/bin install WITHVOICECHAT=no -e LUALIBS=-llua       
+      #- make install -e WITHVOICECHAT=no LUALIBS=-llua DESTDIR=/app/bin
+      # makefile install option is broken  
+      #- mkdir -p ${FLATPAK_DEST}/bin/bin
+      #- cp -r snis_launcher ${FLATPAK_DEST}/bin
+      #- cp -r bin/* ${FLATPAK_DEST}/bin/bin
+      #- cp -r share/* ${FLATPAK_DEST}/bin/share
+      - ls -l /app
+      - ls -l /app/bin
+
       #copy compiled files to flatpak /app folder and set permissions
-      - mkdir -p /app/bin/bin
-      - mkdir -p /app/bin/share
+      #- mkdir -p /app/bin/bin
+      #- mkdir -p /app/bin/share
       #copy it all, as there are tools everywhere
-      - cp -r * ${FLATPAK_DEST}/bin/
+      #- cp -r * ${FLATPAK_DEST}/bin/
     sources:
       - type: git
         url: https://github.com/smcameron/space-nerds-in-space.git
         commit: 08f6aac98967858da463872c1cbe0d08ddba6c17 
 
-  #author does not want to host these files on his git. I am hosting.
+  #author does not want to host these files on his git. I am hosting on /vpelss/snis_flatpak
   - name: snis_meta_icon_desktop
     buildsystem: simple
     build-commands:
@@ -116,20 +124,15 @@ modules:
     sources:
       - type: git
         url: https://github.com/vpelss/snis_flatpak.git
-        commit: main
+        commit: e82d7a175eda7d146088da2b0a28cfdf1fcfe386
 
-  #we need this as snis_launcher needs to be run in root folder with all executables in a bin subfolder. thus /app/bin/bin and I don't want our /app/bin/shared folder to overlap /app/shred
-  - name: snis_wrapper
-    buildsystem: simple
-    build-commands:
-      - install -Dm777 snis.sh /app/bin/snis.sh
-    sources:
-      - type: script
-        dest-filename: snis.sh
-        commands:
-          - cd /app/bin
-          - exec ./snis_launcher
-
-
-
-  
+  #- name: snis_wrapper
+    #buildsystem: simple
+    #build-commands:
+      #- install -Dm777 snis.sh /app/bin/snis.sh
+    #sources:
+      #- type: script
+        #dest-filename: snis.sh
+        #commands:
+          #- cd /app/bin
+          #- exec ./snis_launcher
