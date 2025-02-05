@@ -14,7 +14,9 @@ add-extensions:
     version: '24.08'
     directory: lib/ffmpeg
     add-ld-path: .
-
+cleanup-commands:
+  - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
+  
 modules:
 
   #we need this as snis_launcher needs to be run in root folder with all executables in a bin subfolder. thus /app/bin/bin
