@@ -1,13 +1,19 @@
 id: io.github.vpelss.snis_flatpak
-runtime: org.freedesktop.BasePlatform #not .Platform for opus?
+runtime: org.freedesktop.Platform #not .Platform for opus?
 runtime-version: "24.08"
-sdk: org.freedesktop.BaseSdk #not .sdk for opus?
+sdk: org.freedesktop.Sdk #not .sdk for opus?
 command: boop
 
 build-options:
   #append-ld-library-path: "/app/lib64/"
   #for some reason /app/lib64/pkgconfig/ is not in search path
   #append-pkg-config-path: "/app/lib64/pkgconfig/"
+
+add-extensions:
+  org.freedesktop.Platform.ffmpeg-full:
+    version: '24.08'
+    directory: lib/ffmpeg
+    add-ld-path: .
 
 modules:
 
