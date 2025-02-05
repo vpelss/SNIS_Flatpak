@@ -1,7 +1,7 @@
 id: io.github.vpelss.snis_flatpak
 runtime: org.freedesktop.Platform
 runtime-version: "24.08"
-sdk: org.freedesktop.Sdk
+sdk: org.freedesktop.BaseSdk
 command: boop
 
 build-options:
