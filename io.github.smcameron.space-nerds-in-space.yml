@@ -10,7 +10,7 @@ build-options:
   #append-pkg-config-path: "/app/lib64/pkgconfig/"
 
 config-opts:
-  - --enable-libopus # ? https://github.com/flatpak/freedesktop-sdk-images/blob/1.6/org.freedesktop.Sdk.json.in
+  #- --enable-libopus # ? https://github.com/flatpak/freedesktop-sdk-images/blob/1.6/org.freedesktop.Sdk.json.in
 
 add-extensions:
   org.freedesktop.Platform.ffmpeg-full:
