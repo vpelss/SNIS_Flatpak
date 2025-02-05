@@ -2,7 +2,7 @@ id: io.github.vpelss.snis_flatpak
 runtime: org.freedesktop.Platform 
 runtime-version: "24.08"
 sdk: org.freedesktop.Sdk 
-command: app/bin/boop
+command: boop
 
 build-options:
   #append-ld-library-path: "/app/lib64/"
@@ -116,7 +116,8 @@ modules:
   - name: boop
     buildsystem: simple
     build-commands:
-      - install -Dm755 boop ${FLATPAK_DEST}/bin/boop
+      - install -Dm777 boop /app/bin/boop
+      - ls -l /app/bin
     sources:
       - type: script
         dest-filename: boop
