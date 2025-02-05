@@ -2,7 +2,7 @@ id: io.github.vpelss.snis_flatpak
 runtime: org.freedesktop.Platform
 runtime-version: "24.08"
 sdk: org.freedesktop.Sdk
-command: snis
+command: snis_launcher
 
 build-options:
   #append-ld-library-path: "/app/lib64/"
@@ -65,7 +65,7 @@ modules:
         url: https://github.com/Perlmint/glew-cmake.git
         commit: master
 
-  - name: snis
+  - name: snis_launcher
     buildsystem: simple
     build-commands:
       # some built library modules are not correctly reporting to pkg-config
