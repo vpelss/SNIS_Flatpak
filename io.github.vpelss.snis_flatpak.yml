@@ -128,7 +128,7 @@ modules:
         dest-filename: boop
         commands:
           - ls -l
-          - cd /app/bin
+          #- cd /app/bin
           #- exec ./snis_launcher
 
 
