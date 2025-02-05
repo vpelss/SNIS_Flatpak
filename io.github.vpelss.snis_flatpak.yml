@@ -2,7 +2,7 @@ id: io.github.vpelss.snis_flatpak
 runtime: org.freedesktop.Platform
 runtime-version: "24.08"
 sdk: org.freedesktop.Sdk
-command: snis.sh
+command: boop
 
 build-options:
   #append-ld-library-path: "/app/lib64/"
@@ -10,6 +10,19 @@ build-options:
   #append-pkg-config-path: "/app/lib64/pkgconfig/"
 
 modules:
+
+  #we need this as snis_launcher needs to be run in root folder with all executables in a bin subfolder. thus /app/bin/bin
+  - name: boop
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 boop ${FLATPAK_DEST}/bin/boop
+    sources:
+      - type: script
+        dest-filename: boop
+        commands:
+          - cd /app/bin
+          - ./snis_launcher
+
 
   - name: opus
     buildsystem: simple
@@ -92,18 +105,6 @@ modules:
         url: https://github.com/vpelss/snis_flatpak.git
         commit: main
 
-  #we need this as snis_launcher needs to be run in root folder with all executables in a bin subfolder. thus /app/bin/bin
-  - name: snis.sh
-    buildsystem: simple
-    build-commands:
-      - install -Dm755 snis.sh ${FLATPAK_DEST}/bin/snis.sh
-    sources:
-      - type: script
-        dest-filename: snis.sh
-        commands:
-          - cd /app/bin
-          - echo "snis.sh Ver 1.1"
-          - ./snis_launcher
 
 finish-args:
   - --socket=wayland
