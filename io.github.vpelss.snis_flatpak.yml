@@ -9,6 +9,9 @@ build-options:
   #for some reason /app/lib64/pkgconfig/ is not in search path
   #append-pkg-config-path: "/app/lib64/pkgconfig/"
 
+config-opts:
+  - --enable-libopus
+
 add-extensions:
   org.freedesktop.Platform.ffmpeg-full:
     version: '24.08'
