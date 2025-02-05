@@ -17,7 +17,7 @@ add-extensions:
 cleanup-commands:
   - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
 
-  finish-args:
+finish-args:
   - --socket=wayland
   - --socket=fallback-x11
   - --share=ipc
