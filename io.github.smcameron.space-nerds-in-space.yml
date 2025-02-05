@@ -1,4 +1,4 @@
-id: io.github.vpelss.snis_flatpak
+id: io.github.smcameron.space-nerds-in-space
 runtime: org.freedesktop.Platform 
 runtime-version: "24.08"
 sdk: org.freedesktop.Sdk 
