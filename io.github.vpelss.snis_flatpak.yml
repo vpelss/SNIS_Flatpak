@@ -1,7 +1,7 @@
 id: io.github.vpelss.snis_flatpak
 runtime: org.freedesktop.Platform
 runtime-version: "24.08"
-sdk: org.freedesktop.BaseSdk
+sdk: org.freedesktop.BaseSdk #not .sdk for opus?
 command: boop
 
 build-options:
