@@ -14,8 +14,8 @@ jobs:
     #- uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
         #upload-artifact: "false"
-        bundle: io.github.vpelss.snis_flatpak
-        manifest-path: io.github.vpelss.snis_flatpak.yml
+        bundle: io.github.smcameron.space-nerds-in-space
+        manifest-path: io.github.smcameron.space-nerds-in-space.yml
         cache-key: flatpak-builder-${{ github.sha }}
         upload-artifact: "false"
 
@@ -25,11 +25,11 @@ jobs:
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: io.github.vpelss.snis_flatpak
-        path: io.github.vpelss.snis_flatpak
+        name: io.github.smcameron.space-nerds-in-space
+        path: io.github.smcameron.space-nerds-in-space
  
     - name: upload binaries to release
       uses: softprops/action-gh-release@v2
       with:
           tag_name: "try_me"
-          files: io.github.vpelss.snis_flatpak
+          files: io.github.smcameron.space-nerds-in-space
