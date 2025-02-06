@@ -18,8 +18,8 @@ jobs:
         manifest-path: io.github.smcameron.space-nerds-in-space.yml
         cache-key: flatpak-builder-${{ github.sha }}
         upload-artifact: "false"
-      run: |
-        git submodule add https://github.com/flathub/shared-modules.git
+        run: |
+          git submodule add https://github.com/flathub/shared-modules.git
       
     - name: See
       run: |   
