@@ -2,8 +2,8 @@
 Name=Space_Nerds_In_Space
 GenericName=Space_Nerds_In_Space
 Comment=Spaceship bridge simulator game
-Exec=/app/bin/bin/snis_launcher
-Icon=io.github.smcameron.space-nerds-in-space.svg
+Exec=snis_launcher
+Icon=io.github.smcameron.space-nerds-in-space
 Terminal=false
 Type=Application
 Categories=Game;Simulation;
