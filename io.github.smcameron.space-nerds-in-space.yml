@@ -112,7 +112,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/smcameron/space-nerds-in-space.git
-        commit: 08f6aac98967858da463872c1cbe0d08ddba6c17 
+        commit: 8b3137ed9ba9821859e4b25ac21ff2ef244bccfe
 
   #author does not want to host these files on his git. I am hosting on /vpelss/snis_flatpak
   - name: snis_meta_icon_desktop
@@ -120,11 +120,11 @@ modules:
     build-commands:
       - install -Dm0644 logo.svg "${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg"
       - install -Dm0644 ${FLATPAK_ID}.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
-      - install -Dm0644 ${FLATPAK_ID}.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
+      #- install -Dm0644 ${FLATPAK_ID}.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
     sources:
       - type: git
         url: https://github.com/vpelss/snis_flatpak.git
-        commit: e82d7a175eda7d146088da2b0a28cfdf1fcfe386
+        commit: 47624fe5dc9c73ecbd26ec62249606f1dadd41a5
 
   #- name: snis_wrapper
     #buildsystem: simple
