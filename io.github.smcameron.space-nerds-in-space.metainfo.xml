@@ -12,6 +12,8 @@
 
 <developer id="io.github.smcameron.space-nerds-in-space"><name>SM Cameron</name></developer>
 
+<icon type="remote">https://vpelss.github.io/snis_flatpak/logo.svg</icon>
+
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-only</project_license>
   <releases>
