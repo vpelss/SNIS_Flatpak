@@ -2,7 +2,7 @@ id: io.github.smcameron.space-nerds-in-space
 runtime: org.freedesktop.Platform 
 runtime-version: "24.08"
 sdk: org.freedesktop.Sdk 
-command: /app/bin/bin/snis_launcher #snis_launcher shell script needs to be run in folder with sub folders 'bin' and 'share'. I do not want to combine /app/bin/share folder and /app/share folder for aesthetic reasons
+command: snis_launcher #snis_launcher shell script needs to be run in folder with sub folders 'bin' and 'share'. I do not want to combine /app/bin/share folder and /app/share folder for aesthetic reasons
 
 build-options:
   #append-ld-library-path: "/app/lib64/"
@@ -32,6 +32,10 @@ cleanup:
   #- /bin/bin/snis_launcher
   
 modules:
+
+
+
+  #- name: glu
 
 #see - --enable-libopus bove
 # is that what theu meant
@@ -70,31 +74,27 @@ modules:
         url: https://github.com/PortAudio/portaudio.git
         commit: 242a0241f69bd359b692004f3974ce39ec5137fd #Aug 11, 2021
 
-  - name: glu
-    buildsystem: meson
-    build-commands: 
-    sources:
-      - type: archive
-        url: https://archive.mesa3d.org/glu/glu-9.0.3.tar.xz
-        sha256: bd43fe12f374b1192eb15fe20e45ff456b9bc26ab57f0eee919f96ca0f8a330f
+  - shared-modules/glu/glu-9.json
 
-  - name: glew
-    buildsystem: cmake-ninja
-    config-opts: 
+  - shared-modules/glew/glew.json
+
+  #- name: glew
+    #buildsystem: cmake-ninja
+    #config-opts: 
       # adds glew.pc for /app/lib/pkg-config folder
-      - -D PKG_CONFIG_REPRESENTATIVE_TARGET=libglew_static
-    build-commands: 
-    sources:
-      - type: git 
-        url: https://github.com/Perlmint/glew-cmake.git
-        commit: 72ff6b1a5ecfc1ae6154637298882744487634b4
+      #- -D PKG_CONFIG_REPRESENTATIVE_TARGET=libglew_static
+    #build-commands: 
+    #sources:
+      #- type: git 
+        #url: https://github.com/Perlmint/glew-cmake.git
+        #commit: 72ff6b1a5ecfc1ae6154637298882744487634b4
 
   - name: snis
     buildsystem: simple
     build-commands:
       # some built library modules are not correctly reporting to pkg-config so LUALIBS=-llua       
       #- echo $HOME
-      - make  PREFIX=${FLATPAK_DEST}/bin install WITHVOICECHAT=no -e LUALIBS=-llua       
+      - make  PREFIX=${FLATPAK_DEST} install WITHVOICECHAT=no -e LUALIBS=-llua       
       #- make install -e WITHVOICECHAT=no LUALIBS=-llua DESTDIR=/app/bin
       # makefile install option is broken  
       #- mkdir -p ${FLATPAK_DEST}/bin/bin
@@ -118,21 +118,11 @@ modules:
   - name: snis_meta_icon_desktop
     buildsystem: simple
     build-commands:
-      - install -Dm0644 logo.svg "${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg"
-      - install -Dm0644 ${FLATPAK_ID}.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
+      - ls -l
+      #- install -Dm0644 logo.svg "${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg"
+      #- install -Dm0644 ${FLATPAK_ID}.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
       #- install -Dm0644 ${FLATPAK_ID}.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
     sources:
       - type: git
         url: https://github.com/vpelss/snis_flatpak.git
-        commit: 47624fe5dc9c73ecbd26ec62249606f1dadd41a5
-
-  #- name: snis_wrapper
-    #buildsystem: simple
-    #build-commands:
-      #- install -Dm777 snis.sh /app/bin/snis.sh
-    #sources:
-      #- type: script
-        #dest-filename: snis.sh
-        #commands:
-          #- cd /app/bin
-          #- exec ./snis_launcher
+        commit: main
