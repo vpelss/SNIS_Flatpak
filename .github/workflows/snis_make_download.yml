@@ -13,6 +13,7 @@ jobs:
 
     - name: prep
       run: |
+        git config --global --add safe.directory /__w/snis_flatpak/snis_flatpak
         git submodule add https://github.com/flathub/shared-modules.git
     
     - uses: jochumdev/flatpak-github-actions/flatpak-builder@builder-update-deps
