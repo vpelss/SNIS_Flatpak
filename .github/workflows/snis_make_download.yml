@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    -name: prep
+    - name: prep
       run: |
         git submodule add https://github.com/flathub/shared-modules.git
     
