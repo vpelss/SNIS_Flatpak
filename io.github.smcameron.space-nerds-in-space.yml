@@ -65,4 +65,4 @@ modules:
     sources:
       - type: git
         url: https://github.com/vpelss/snis_flatpak.git
-        commit: main
+        commit: d0470edd428d5f566ff89a36a8dc66f4d26a9d34
