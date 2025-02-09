@@ -2,7 +2,7 @@ id: io.github.smcameron.space-nerds-in-space
 runtime: org.freedesktop.Platform 
 runtime-version: "24.08"
 sdk: org.freedesktop.Sdk 
-command: snis_launcher 
+command: /app/snis.sh
 
 finish-args:
   - --socket=wayland
@@ -51,7 +51,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/smcameron/space-nerds-in-space.git
-        commit: 330ae49942a80b56c4fec304eb2bff66cc7f9c73
+        commit: 81e0e8e17873c7f60a3fe3ca273c81d653637eb1
 
   #author does not want to host these files on his git. I am hosting on /vpelss/snis_flatpak
   - name: snis_meta_icon_desktop
@@ -65,3 +65,17 @@ modules:
       - type: git
         url: https://github.com/vpelss/snis_flatpak.git
         commit: 1274dcf199c8cd59596758f5f30316c107967c19
+
+  #we need this as program needs to be run with us in correct pwd folder : /app/bin
+  - name: snis.sh
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 snis.sh ${FLATPAK_DEST}/snis.sh
+      - cp ${FLATPAK_DEST}/bin/snis_launcher ${FLATPAK_DEST}/
+    sources:
+      - type: script
+        dest-filename: snis.sh
+        commands:    
+          - cd /app # this is why this is required
+          - ls -l
+          - ./snis_launcher
