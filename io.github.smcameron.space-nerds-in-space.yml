@@ -46,7 +46,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/vpelss/snis_flatpak.git
-        commit: 4b447f39fb03b203039595959a701d5a95bb3177
+        commit: ad74180292e6c27aa528fd4d2a1f2472668abd3c
 
    # snis_launcher must be run in the active working directory
   - name: snis.sh
