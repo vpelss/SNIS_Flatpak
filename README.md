@@ -16,7 +16,7 @@ If your distro does not already have flatpak installed, install flatpak for your
 
 Then download the bundle: [https://github.com/vpelss/snis_flatpak/releases/tag/try_me](https://github.com/vpelss/snis_flatpak/releases/download/try_me/io.github.smcameron.space-nerds-in-space)
 
-Then Install you may need to prefix with sudo: 
+Then Install from a terminal. (you may need to run prefix sudo)
 
 ```
 flatpak install --bundle io.github.smcameron.space-nerds-in-space
