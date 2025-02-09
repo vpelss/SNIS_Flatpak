@@ -14,7 +14,7 @@ We are planning to have it show on flatub. Until that is accomplished:
 
 If your distro does not already have flatpak installed, install flatpak for your linux distro as per: https://flatpak.org/setup/
 
-Then download the bundle: https://github.com/vpelss/snis_flatpak/releases/tag/try_me
+Then download the bundle: [https://github.com/vpelss/snis_flatpak/releases/tag/try_me](https://github.com/vpelss/snis_flatpak/releases/download/try_me/io.github.smcameron.space-nerds-in-space)
 
 Then Install you may need to prefix with sudo: 
 
