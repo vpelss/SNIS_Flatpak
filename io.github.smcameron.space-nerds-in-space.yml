@@ -47,7 +47,7 @@ modules:
     buildsystem: simple
     build-commands:
       # some built library modules are not correctly reporting to pkg-config so might need LUALIBS=-llua       
-      - make DESTDIR=${FLATPAK_DEST} install WITHVOICECHAT=yes
+      - make PREFIX=${FLATPAK_DEST} install WITHVOICECHAT=yes
     sources:
       - type: git
         url: https://github.com/smcameron/space-nerds-in-space.git
