@@ -25,7 +25,7 @@ flatpak install --bundle io.github.smcameron.space-nerds-in-space
 Then run it: 
 
 ```
-flatpak run io.github.vpelss.snis_flatpak
+flatpak run io.github.smcameron.space-nerds-in-space
 ```
 
 # AppImage
