@@ -10,12 +10,16 @@ Or:
 
 # Install with flatpak
 
+We are planning to have it show on flatub. Until that is accomplished:
+
 If your distro does not already have flatpak installed, install flatpak for your linux distro as per: https://flatpak.org/setup/
 
-Then install Space Nerds In Space: 
+Then download the bundle: https://github.com/vpelss/snis_flatpak/releases/tag/try_me
+
+Then Install you may need to prefix with sudo: 
 
 ```
-flatpak install --user -v https://vpelss.github.io/snis_flatpak/io.github.vpelss.snis_flatpak.flatpakref
+flatpak install --bundle io.github.smcameron.space-nerds-in-space
 ```
 
 Then run it: 
