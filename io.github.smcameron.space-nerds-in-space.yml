@@ -6,8 +6,6 @@ command: /app/snis_launcher
 
 finish-args:
   - --socket=x11
-  #- --socket=wayland
-  #- --socket=fallback-x11
   - --share=ipc
   - --device=dri
   - --share=network
@@ -65,9 +63,9 @@ modules:
     sources:
       - type: git
         url: https://github.com/vpelss/snis_flatpak.git
-        commit: 4b447f39fb03b203039595959a701d5a95bb3177
+        commit: 15f9417c573f7413de77ceb6cd85ab8f938ed3b3
 
-  #we need this as program needs to be run with us in correct pwd folder : /app/bin
+ # snis_launcher must be run in the active working directory 
   - name: snis.sh
     buildsystem: simple
     build-commands:
@@ -77,6 +75,5 @@ modules:
       - type: script
         dest-filename: snis.sh
         commands:
-          # snis_launcher must be run in the active working directory 
           - cd /app 
           - ./snis_launcher
