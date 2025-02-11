@@ -1,6 +1,6 @@
 on: workflow_dispatch
 
-name: SNIS_make_download
+name: SNIS_make_download_x86
 jobs:
   flatpak:
     name: "Flatpak"
