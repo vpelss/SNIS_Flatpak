@@ -24,7 +24,7 @@ jobs:
         manifest-path: io.github.smcameron.space-nerds-in-space.yml
         cache-key: flatpak-builder-${{ github.sha }}
         upload-artifact: "false"
-
+        arch: x86_64
       
     - name: See
       run: |   
