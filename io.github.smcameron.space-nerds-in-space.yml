@@ -2,7 +2,7 @@ id: io.github.smcameron.space-nerds-in-space
 runtime: org.freedesktop.Platform 
 runtime-version: "24.08"
 sdk: org.freedesktop.Sdk 
-command: /app/snis_launcher
+command: snis.sh
 
 finish-args:
   - --socket=x11
@@ -13,8 +13,6 @@ finish-args:
  
 modules:
 
-  - shared-modules/lua5.3/lua-5.3.5.json
- 
   - name: portaudio
     buildsystem: cmake-ninja
     sources:
@@ -22,6 +20,7 @@ modules:
         url: https://github.com/PortAudio/portaudio.git
         commit: 242a0241f69bd359b692004f3974ce39ec5137fd #Aug 11, 2021
 
+  - shared-modules/lua5.3/lua-5.3.5.json
   - shared-modules/glu/glu-9.json
   - shared-modules/glew/glew.json
 
@@ -51,7 +50,7 @@ modules:
   - name: snis.sh
     buildsystem: simple
     build-commands:
-      - install -Dm755 snis.sh ${FLATPAK_DEST}/snis.sh
+      - install -Dm755 snis.sh ${FLATPAK_DEST}/bin/snis.sh
       - mv ${FLATPAK_DEST}/bin/snis_launcher ${FLATPAK_DEST}/snis_launcher
     sources:
       - type: script
